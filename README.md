@@ -9,6 +9,8 @@ por Juan Pablo De la torre Valdez
 
 <p>Podriamos inicializarlo con ./vendor/sail up</p>
 <p>O directamente levantando el docker compose up</p>
+<h4>Para crear un alias en la base de wsl para iniciar los contenedores de devstagram</h4>
+<pre>alias devstagram='dir=$(pwd); cd _projects/Laravel9-Php8-MVC/devstagram && [ -f sail ] && sh sail up || sh vendor/bin/sail up; cd $dir'</pre>
 
 
 <p align="center">
