@@ -1,6 +1,8 @@
 version: '3'
+
 services:
     laravel.test:
+        container_name: '${APP_NAME}_laravel.test'
         build:
             context: ./vendor/laravel/sail/runtimes/8.2
             dockerfile: Dockerfile
@@ -29,6 +31,7 @@ services:
             - mailpit
             - selenium
     mysql:
+        container_name: '${APP_NAME}_mysql'
         image: 'mysql/mysql-server:8.0'
         ports:
             - '${FORWARD_DB_PORT:-3306}:3306'
@@ -54,6 +57,7 @@ services:
             timeout: 5s
     redis:
         image: 'redis:alpine'
+        container_name: '${APP_NAME}_redis'
         ports:
             - '${FORWARD_REDIS_PORT:-6379}:6379'
         volumes:
@@ -68,6 +72,7 @@ services:
             retries: 3
             timeout: 5s
     meilisearch:
+        container_name: '${APP_NAME}_meilisearch'
         image: 'getmeili/meilisearch:latest'
         ports:
             - '${FORWARD_MEILISEARCH_PORT:-7700}:7700'
@@ -85,6 +90,7 @@ services:
             retries: 3
             timeout: 5s
     mailpit:
+        container_name: '${APP_NAME}_mailpit'
         image: 'axllent/mailpit:latest'
         ports:
             - '${FORWARD_MAILPIT_PORT:-1025}:1025'
@@ -92,6 +98,7 @@ services:
         networks:
             - sail
     selenium:
+        container_name: '${APP_NAME}_selenium'
         image: selenium/standalone-chrome
         extra_hosts:
             - 'host.docker.internal:host-gateway'
