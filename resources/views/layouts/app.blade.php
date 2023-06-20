@@ -21,7 +21,9 @@
         <a href="/nosotros">Nosotros</a>
         <a href="/tienda">Tienda</a>
     </nav>
-    <h1>Página principal<h1>
+    <h1>@yield('titulo')</h1>
+    <hr>
+    @yield('contenido')
 
 </body>
 
