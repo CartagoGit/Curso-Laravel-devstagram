@@ -17,7 +17,12 @@
 </head>
 
 <body class="antialiased">
-    Hola Mundo en Laravel
+    <nav>
+        <a href="/">Principal</a>
+        <a href="/nosotros">Nosotros</a>
+    </nav>
+    <h1>Página principal<h1>
+
 </body>
 
 </html>
