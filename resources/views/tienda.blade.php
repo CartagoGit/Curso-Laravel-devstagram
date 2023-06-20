@@ -1,10 +1,9 @@
 
-@extends('layouts.app');
-
+@extends('layouts.app')
 @section('titulo')
     Tienda Virtual
 @endsection()
 
 @section('contenido')
-    Nuestra tienda
+    Nuestra tienda no se yo...
 @endsection()
