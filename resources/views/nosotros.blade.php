@@ -1,12 +1,9 @@
-<?php
-echo 'Nosotros';
+@extends('layouts.app');
 
-class Nosotros
-{
-    public function __construct()
-    {
-        echo 'Nosotros';
-    }
-}
+@section('titulo')
+    ¿Quiénes somos?
+@endsection()
 
-$nosotros = new Nosotros();
+@section('contenido')
+    Sobre nosotros
+@endsection()
