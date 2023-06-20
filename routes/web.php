@@ -20,6 +20,6 @@ Route::get('/nosotros', function () {
     return view('nosotros');
 });
 
-Route::get('/tienda-virtual', function () {
-    return view('tienda-virtual');
+Route::get('/tienda', function () {
+    return view('tienda');
 });
