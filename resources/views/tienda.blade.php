@@ -5,5 +5,5 @@
 @endsection()
 
 @section('contenido')
-    Nuestra tienda no se yo...
+    Nuestra tienda no se yo...per
 @endsection()
