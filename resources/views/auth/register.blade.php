@@ -29,7 +29,18 @@
                         class="border p-3 w-full rounded-lg">
 
                 </div>
+
+                <div class="mb-5">
+                    <label for="email" class="mb-2 block uppercase text-gray-500 font-bold">
+                        Email
+                    </label>
+                    <input id="email" type="text" name="email" placeholder="Email"
+                        class="border p-3 w-full rounded-lg">
+
+                </div>
             </form>
         </div>
     </div>
 @endsection
+
+
