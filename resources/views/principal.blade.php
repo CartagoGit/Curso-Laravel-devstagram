@@ -6,5 +6,5 @@
 
 @section('contenido')
     Esta es la página principal
-    y funciona?
+    no, no fun ciona
 @endsection()
