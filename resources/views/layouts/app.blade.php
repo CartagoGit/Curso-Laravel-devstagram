@@ -12,12 +12,12 @@
 </head>
 
 <body>
-    <nav>
+    {{-- <nav>
         <a href="/">Principal</a>
         <a href="/nosotros">Nosotros</a>
         <a href="/tienda">Tienda</a>
-    </nav>
-    <h1>@yield('titulo')</h1>
+    </nav> --}}
+    <h1 class="text-4xl font-extrabold">@yield('titulo')</h1>
     <hr>
     @yield('contenido')
 
