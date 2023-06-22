@@ -31,7 +31,9 @@
                     </label>
                     <input id="nick" type="text" name="nick" placeholder="Nick del usuario"
                         class="border p-3 w-full rounded-lg">
-
+                    @error('nick')
+                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center w-full">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="mb-5">
@@ -40,7 +42,9 @@
                     </label>
                     <input id="email" type="text" name="email" placeholder="Email"
                         class="border p-3 w-full rounded-lg">
-
+                    @error('email')
+                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center w-full">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="mb-5">
@@ -49,7 +53,9 @@
                     </label>
                     <input id="password" type="password" name="password" placeholder="Contraseña"
                         class="border p-3 w-full rounded-lg">
-
+                    @error('password')
+                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center w-full">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="mb-5">
