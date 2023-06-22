@@ -7,12 +7,12 @@
 @section('contenido')
     <div class="md:flex md:justify-center md:gap-10 md:items-center">
         <div class="md:w-6/12 p-5">
-            <img src="{{ asset('img/auth/registrar.jpg') }}" alt="Imagen de registro de usuario"
-            class="rounded-lg">
+            <img src="{{ asset('img/auth/registrar.jpg') }}" alt="Imagen de registro de usuario" class="rounded-lg">
         </div>
 
         <div class="md:w-4/12 p-6 bg-white rounded-lg shadow-xl">
-            <form action="/registrar" method="POST">
+            <form action="{{ route('register') }}" method="POST">
+                @csrf
                 <div class="mb-5">
                     <label for="name" class="mb-2 block uppercase text-gray-500 font-bold">
                         Nombre

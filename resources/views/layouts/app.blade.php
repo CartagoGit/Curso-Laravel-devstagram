@@ -19,7 +19,9 @@
 
             <nav>
                 <a class="font-bold uppercase text-gray-600 text-sm " href="/login">Login</a>
-                <a class="font-bold uppercase text-gray-600 text-sm" href="/registrar">Crear Cuenta</a>
+                <a class="font-bold uppercase text-gray-600 text-sm" href="{{ route('register') }}">
+                    Crear Cuenta
+                </a>
             </nav>
         </div>
     </header>
