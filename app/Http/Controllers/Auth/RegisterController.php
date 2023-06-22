@@ -22,7 +22,7 @@ class RegisterController extends Controller
         //* Validaciones
         $this->validate($request, [
             'nombre' => 'required|min:3|max:255',
-            'nick' => 'required|min:3|max:255',
+            'nick' => 'required|min:3|max:255|unique:table',
             'email' => 'required|min:5|max:255|email',
             'password' => 'required|confirmed|min:8|max:255',
         ]);

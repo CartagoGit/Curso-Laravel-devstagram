@@ -18,7 +18,8 @@
                         Nombre
                     </label>
                     <input id="nombre" type="text" name="nombre" placeholder="Nombre"
-                        class="border p-3 w-full rounded-lg">
+                        class="border p-3 w-full rounded-lg @error('nombre') border-red-500 @enderror"
+                        value="{{ old('nombre') }}" />
                     @error('nombre')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center w-full">{{ $message }}</p>
                     @enderror
@@ -30,7 +31,8 @@
                         Nick del usuario
                     </label>
                     <input id="nick" type="text" name="nick" placeholder="Nick del usuario"
-                        class="border p-3 w-full rounded-lg">
+                        class="border p-3 w-full rounded-lg @error('nick') border-red-500 @enderror"
+                        value="{{ old('nick') }}" />
                     @error('nick')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center w-full">{{ $message }}</p>
                     @enderror
@@ -41,7 +43,8 @@
                         Email
                     </label>
                     <input id="email" type="text" name="email" placeholder="Email"
-                        class="border p-3 w-full rounded-lg">
+                        class="border p-3 w-full rounded-lg @error('email') border-red-500 @enderror"
+                        value="{{ old('email') }}" />
                     @error('email')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center w-full">{{ $message }}</p>
                     @enderror
@@ -52,7 +55,8 @@
                         Contraseña
                     </label>
                     <input id="password" type="password" name="password" placeholder="Contraseña"
-                        class="border p-3 w-full rounded-lg">
+                        class="border p-3 w-full rounded-lg @error('password') border-red-500 @enderror"
+                        value="{{ old('password') }}" />
                     @error('password')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center w-full">{{ $message }}</p>
                     @enderror
@@ -63,12 +67,14 @@
                         Verificar Contraseña
                     </label>
                     <input id="password_confirmation" type="password" name="password_confirmation"
-                        placeholder="Contraseña de verificación" class="border p-3 w-full rounded-lg">
+                        placeholder="Contraseña de verificación"
+                        class="border p-3 w-full rounded-lg @error('password') border-red-500 @enderror"
+                        value="{{ old('password_confirmation') }}" />
 
                 </div>
 
                 <input type="submit" value="Registrarse"
-                    class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase w-full font-bold p-3 text-white rounded-lg">
+                    class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase w-full font-bold p-3 text-white rounded-lg" />
             </form>
         </div>
     </div>
