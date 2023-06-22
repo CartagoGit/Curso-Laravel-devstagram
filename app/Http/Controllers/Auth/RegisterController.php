@@ -21,9 +21,9 @@ class RegisterController extends Controller
 
         //* Validaciones
         $this->validate($request, [
-            'nombre' => 'required|min:3|max:255',
-            'nick' => 'required|min:3|max:255|unique:table',
-            'email' => 'required|min:5|max:255|email',
+            'nombre' => 'required|min:3|max:30',
+            'nick' => 'required|min:3|max:20|unique:users',
+            'email' => 'required|min:5|max:60|email|unique:users',
             'password' => 'required|confirmed|min:8|max:255',
         ]);
     }
