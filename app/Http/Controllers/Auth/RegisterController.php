@@ -24,7 +24,9 @@ class RegisterController extends Controller
             'nombre' => 'required|min:3|max:30',
             'nick' => 'required|min:3|max:20|unique:users',
             'email' => 'required|min:5|max:60|email|unique:users',
-            'password' => 'required|confirmed|min:8|max:255',
+            'password' => 'required|confirmed|min:6|max:255',
         ]);
+
+        dd('Creando validaciones...');
     }
 }
