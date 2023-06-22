@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class RegisterController extends Controller
@@ -18,15 +19,22 @@ class RegisterController extends Controller
         // dd($request);
 
         // dd($request->only('email', 'password'));
-
+        // dd($request->nick);
+        // dd($data);
         //* Validaciones
         $this->validate($request, [
             'nombre' => 'required|min:3|max:30',
-            'nick' => 'required|min:3|max:20|unique:users',
+            'nick' => 'required|min:3|max:20|unique:users,username',
             'email' => 'required|min:5|max:60|email|unique:users',
             'password' => 'required|confirmed|min:6|max:255',
         ]);
 
-        dd('Creando validaciones...');
+        // dd('Creando validaciones...');
+        User::create([
+            'name' => $request->nombre,
+            'username' => $request->nick,
+            'email' => $request->email,
+            'password' => $request->password,
+        ]);
     }
 }
