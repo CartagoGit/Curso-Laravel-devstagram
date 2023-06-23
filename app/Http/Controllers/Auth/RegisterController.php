@@ -16,11 +16,6 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request);
-
-        // dd($request->only('email', 'password'));
-        // dd($request->nick);
-        // dd($data);
         //* Validaciones
         $this->validate($request, [
             'nombre' => 'required|min:3|max:30',
@@ -28,8 +23,6 @@ class RegisterController extends Controller
             'email' => 'required|min:5|max:60|email|unique:users',
             'password' => 'required|confirmed|min:6|max:255',
         ]);
-
-        // dd('Creando validaciones...');
         User::create([
             'name' => $request->nombre,
             'username' => $request->nick,
