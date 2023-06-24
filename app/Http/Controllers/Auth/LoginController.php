@@ -42,6 +42,7 @@ class LoginController extends Controller
             return redirect()->route('dashboard');
         }
 
+        //* Si no se ha podido autenticar, vuelve a la página anterior con el siguiente mensaje
         return back()->with('loginFailed', 'Credenciales no válidas');
     }
 }
