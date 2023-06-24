@@ -17,9 +17,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('principal');
-});
+// Route::get('/', function () {
+//     // return view('principal');
+//     if(auth()->user()){
+//         return redirect('dashboard');
+//     }
+
+//     return redirect('login');
+// });
 
 
 
@@ -30,3 +35,12 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+
+Route::get('/{any}', function () {
+    if (auth()->check()) {
+        return redirect('/dashboard');
+    } else {
+        return redirect('/login');
+    }
+})->where('any', '.*');
