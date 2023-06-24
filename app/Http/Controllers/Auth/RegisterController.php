@@ -13,6 +13,7 @@ class RegisterController extends Controller
 
     public function index()
     {
+        auth()->logout();
         return view('auth.register');
     }
 
