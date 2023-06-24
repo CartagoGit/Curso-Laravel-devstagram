@@ -50,5 +50,7 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password),
             'path' => $request->path,
         ]);
+
+        return redirect()->route('board');
     }
 }
