@@ -21,22 +21,33 @@ class RegisterController extends Controller
         //* Convertimos el valor de username en slug / formato de url
         // para evitar que puedan repetirse los username y nos casque un error
 
-        $request->request->add(['path' => $request->nick, 'nick' => Str::slug($request->nick)]);
+        $request->request->add(['path' => Str::slug($request->nick)]);
 
         //* Validaciones
         $this->validate($request, [
             'nombre' => 'required|min:3|max:30',
-            'nick' => 'required|min:3|max:20|unique:url,username',
+            // 'nick' => 'required|min:3|max:20|unique:url,username',
+            'nick' => [
+                'required',
+                'min:3',
+                'max:20',
+                'unique:users,username',
+                function ($attribute, $value, $fail) use ($request) {
+                    $existingPath = User::where('path', $request->path)->exists();
+                    if ($existingPath) {
+                        $fail('El valor del campo nick ya está en uso.');
+                    }
+                },
+            ],
 
             'email' => 'required|min:5|max:60|email|unique:users',
             'password' => 'required|confirmed|min:6|max:255',
         ]);
         User::create([
             'name' => $request->nombre,
-            'username' => $request->originalNick,
+            'username' => $request->nick,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'path' => $request->path,
             'path' => $request->path,
         ]);
     }
