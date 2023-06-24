@@ -15,13 +15,13 @@
                 @csrf
 
                 <div class="mb-5">
-                    <label for="nick" class="mb-2 block uppercase text-gray-500 font-bold">
+                    <label for="credencial" class="mb-2 block uppercase text-gray-500 font-bold">
                         Nick o email del usuario
                     </label>
-                    <input id="nick" type="text" name="nick" placeholder="Nick del usuario"
-                        class="border p-3 w-full rounded-lg @error('nick') border-red-500 @enderror"
-                        value="{{ old('nick') }}" />
-                    @error('nick')
+                    <input id="credencial" type="text" name="credencial" placeholder="Nick o email del usuario"
+                        class="border p-3 w-full rounded-lg @error('credencial') border-red-500 @enderror"
+                        value="{{ old('credencial') }}" />
+                    @error('credencial')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center w-full">{{ $message }}</p>
                     @enderror
                 </div>
@@ -43,6 +43,9 @@
 
                 <input type="submit" value="Iniciar sesión"
                     class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase w-full font-bold p-3 text-white rounded-lg" />
+                @error('status')
+                    <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center w-full">{{ $message }}</p>
+                @enderror
             </form>
         </div>
     </div>
