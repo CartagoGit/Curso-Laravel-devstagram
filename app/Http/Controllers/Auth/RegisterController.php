@@ -51,6 +51,15 @@ class RegisterController extends Controller
             'path' => $request->path,
         ]);
 
-        return redirect()->route('board');
+        //* Autenticar usuario
+        // auth()->attempt([
+        //     'email' => $request->email,
+        //     'password' => $request->password,
+        // ]);
+
+        //* Otra forma de autenticar
+        auth()->attempt($request->only(['email', 'password']));
+
+        return redirect()->route('dashboard');
     }
 }

@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\PostController;
+
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,4 +28,4 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 
-Route::get('/board', [PostController::class, 'index'])->name('board');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
