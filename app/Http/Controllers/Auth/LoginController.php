@@ -42,6 +42,6 @@ class LoginController extends Controller
             return redirect()->route('dashboard');
         }
 
-        return back()->with('status', 'Credenciales no válidas');
+        return back()->with('loginFailed', 'Credenciales no válidas');
     }
 }
