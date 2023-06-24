@@ -17,8 +17,8 @@
 
             <h1 class="text-3xl font-black"> <a href="/">DevStagram </a> </h1>
 
-            <nav>
-                <a class="font-bold uppercase text-gray-600 text-sm " href="/login">Login</a>
+            <nav class="flex gap-3 sx:gap-5 sm:gap-10">
+                <a class="font-bold uppercase text-gray-600 text-sm " href="/login">Iniciar sesión</a>
                 <a class="font-bold uppercase text-gray-600 text-sm" href="{{ route('register') }}">
                     Crear Cuenta
                 </a>
