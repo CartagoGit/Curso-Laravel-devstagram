@@ -32,11 +32,12 @@
                     </a>
                     <div class="flex gap-4">
 
-                        <div class="font-bold text-gray-600 items-center flex gap-2">
+                        <a class="font-bold text-gray-600 items-center flex gap-2"
+                            href={{ route('posts.index', auth()->user()->path) }}>
                             Hola <span class="font-normal">
                                 {{ auth()->user()->name }}
                             </span>
-                        </div>
+                        </a>
                         <form class="flex items-center"action="{{ route('logout') }}" method="POST">
                             @csrf
                             <button class="font-bold uppercase text-gray-600 text-sm ">
