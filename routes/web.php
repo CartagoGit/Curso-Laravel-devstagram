@@ -1,11 +1,13 @@
 <?php
 
+use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\PageNotFoundController;
-use App\Http\Controllers\Auth\LogoutController;
-use App\Http\Controllers\PostController;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +29,7 @@ Route::post('/login', [LoginController::class, 'store']);
 
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
-Route::get('/dashboard', [PostController::class, 'index'])->name('dashboard');
+Route::get('/{userPath}', [PostController::class, 'index'])->name('dashboard');
 
 //* Devuelve cualquier vista que no coincida a login o a dashboard dependiendo si está autenticado o no
 Route::get('/{any}', [PageNotFoundController::class, 'redirectAuth'])->where('any', '.*')->name('root');
