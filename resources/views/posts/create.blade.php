@@ -11,7 +11,13 @@
                 class="dropzone border-dashed border-gray-200 rounded-xl
             border-[4px] w-full rounder flex flex-col justify-center bg-gray-50 shadow-xl items-center cursor-pointer hover:opacity-70 transition-opacity">
                 <div class="dz-message text-gray-500 uppercase font-bold" data-dz-message>
-                    <span>Suelta <span class="underline">aquí</span> tu imagen</span>
+                    <span>
+                        Suelta
+                        <span class="underline">
+                            aquí
+                        </span>
+                        tu imagen
+                    </span>
                 </div>
             </form>
         </div>
@@ -35,8 +41,9 @@
                     <label for="descripcion" class="mb-2 block uppercase text-gray-500 font-bold">
                         Descripción de la publicación
                     </label>
-                    <textarea id="descripcion" type="text" name="descripcion" placeholder="Descripción de la publicación"
-                        class="border p-3 w-full rounded-lg focus:outline-gray-300  @error('descripcion') border-red-500 @enderror">{{ old('descripcion') }}</textarea>
+                    <textarea id="descripcion" type="text" name="descripcion" minlength="10" maxlength="2200"
+                        placeholder="Descripción de la publicación"
+                        class="border p-3 w-full rounded-lg focus:outline-gray-300 resize-y min-h-[50px] max-h-[300px]  @error('descripcion') border-red-500 @enderror">{{ old('descripcion') }}</textarea>
                     @error('descripcion')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center w-full">{{ $message }}</p>
                     @enderror
