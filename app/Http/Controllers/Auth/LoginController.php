@@ -12,7 +12,7 @@ class LoginController extends Controller
 
         if (auth()->check()) {
 
-            return redirect()->route('posts.index');
+            return redirect()->route('posts.index', auth()->user()->path);
         }
         return view('auth.login');
     }

@@ -36,6 +36,10 @@
                     @enderror
 
                 </div>
+                <button type="submit"
+                    class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase w-full font-bold p-3 text-white rounded-lg">
+                    Publicar
+                </button>
             </form>
         </div>
     </div>

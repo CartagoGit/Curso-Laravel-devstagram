@@ -74,8 +74,10 @@
 
                 </div>
 
-                <input type="submit" value="Registrarse"
-                    class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase w-full font-bold p-3 text-white rounded-lg" />
+                <button type="submit"
+                    class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase w-full font-bold p-3 text-white rounded-lg">
+                    Registrarse
+                </button>
             </form>
         </div>
     </div>
