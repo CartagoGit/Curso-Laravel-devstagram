@@ -16,18 +16,46 @@
         <div class="container mx-auto flex justify-between items-center">
 
             <h1 class="text-3xl font-black"> <a href="/">DevStagram </a> </h1>
-            @if (!auth()->check())
-                <nav class="flex gap-3 sx:gap-5 sm:gap-10">
+            <nav class="flex gap-3 sx:gap-5 sm:gap-10">
+                @if (auth()->check())
+                    <div class="font-bold  text-gray-600 text-sm">
+                        Hola <span class="font-normal">
+                            {{ auth()->user()->name }}
+                        </span>
+                    </div>
+                    <a class="font-bold uppercase text-gray-600 text-sm " href="{{ auth()->logout() }}">Cerrar
+                        sesión</a>
+                @else
                     <a class="font-bold uppercase text-gray-600 text-sm " href="/login">Iniciar sesión</a>
                     <a class="font-bold uppercase text-gray-600 text-sm" href="{{ route('register') }}">
                         Crear Cuenta
                     </a>
-                </nav>
-            @else
-                <nav class="flex gap-3 sx:gap-5 sm:gap-10">
-                    <a class="font-bold uppercase text-gray-600 text-sm " href="/login">Cerrar sesión</a>
-                </nav>
-            @endif
+                @endif
+
+                {{-- * Se podria hacer asi o con la directiva auth --}}
+                {{-- @auth
+                    <div class="text-gray-600 text-sm">
+                        Hola <span class="font-normal">
+                            {{ auth()->user()->name }}
+                        </span>
+                    </div>
+                    <a class="font-bold uppercase text-gray-600 text-sm " href="{{ auth()->logout() }}">
+                        Cerrar sesión
+                    </a>
+
+                @endauth
+
+                @guest(auth()->check())
+                    <a class="font-bold uppercase text-gray-600 text-sm " href="{{ route('login') }}">
+                        Iniciar sesión
+                    </a>
+                    <a class="font-bold uppercase text-gray-600 text-sm" href="{{ route('register') }}">
+                        Crear Cuenta
+                    </a>
+                @endguest --}}
+            </nav>
+
+
         </div>
     </header>
 
