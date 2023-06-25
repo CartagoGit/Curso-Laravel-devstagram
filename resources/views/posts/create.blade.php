@@ -41,9 +41,23 @@
                     <label for="descripcion" class="mb-2 block uppercase text-gray-500 font-bold">
                         Descripción de la publicación
                     </label>
-                    <textarea id="descripcion" type="text" name="descripcion" minlength="10" maxlength="2200"
-                        placeholder="Descripción de la publicación"
-                        class="border p-3 w-full rounded-lg focus:outline-gray-300 resize-y min-h-[50px] max-h-[300px]  @error('descripcion') border-red-500 @enderror">{{ old('descripcion') }}</textarea>
+                    <div class="relative">
+                        <textarea id="descripcion" type="text" name="descripcion" minlength="10" maxlength="2200"
+                            placeholder="Descripción de la publicación"
+                            oninput="updateDescripcionLength(this)"
+                            class="border p-3 w-full rounded-lg focus:outline-gray-300 resize-y h-[200px] min-h-[100px] max-h-[500px]  @error('descripcion') border-red-500 @enderror">{{ old('descripcion') }}</textarea>
+                        <span class="absolute text-xs right-0 -bottom-3 text-gray-400">
+                            <span id="descripcion-length">
+                                {{ strlen(old('descripcion')) }}
+                            </span>/2200
+                        </span>
+                        <script>
+                            function updateDescripcionLength(textarea) {
+                                let descripcionLength = textarea.value.length;
+                                document.getElementById('descripcion-length').textContent = descripcionLength;
+                            }
+                        </script>
+                    </div>
                     @error('descripcion')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center w-full">{{ $message }}</p>
                     @enderror
