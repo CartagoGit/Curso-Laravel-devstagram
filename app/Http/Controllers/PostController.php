@@ -19,7 +19,11 @@ class PostController extends Controller
             return redirect('/' . $actualUser->path);
         }
         $user = User::where('path', $userPath)->first();
-       
+
         return view('main.dashboard', ['user' => $user]);
+    }
+
+    public function create(){
+        
     }
 }

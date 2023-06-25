@@ -12,7 +12,7 @@ class LoginController extends Controller
 
         if (auth()->check()) {
 
-            return redirect()->route('dashboard');
+            return redirect()->route('posts.index');
         }
         return view('auth.login');
     }
@@ -40,7 +40,7 @@ class LoginController extends Controller
             || auth()->attempt(['username' => $credentials['username'], 'password' => $credentials['password']], request()->remember)
         ) {
             //* Redireccionar
-            return redirect()->route('dashboard');
+            return redirect()->route('posts.index', auth()->user()->path);
         }
 
         //* Si no se ha podido autenticar, vuelve a la página anterior con el siguiente mensaje

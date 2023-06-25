@@ -13,7 +13,7 @@ class PageNotFoundController extends Controller
     static public function redirectAuth(): RedirectResponse
     {
         if (auth()->check()) {
-            return redirect('/dashboard');
+            return redirect('/'.auth()->user()->path);
         }
         return redirect('/login');
     }
