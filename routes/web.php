@@ -37,10 +37,9 @@ Route::post('/login', [LoginController::class, 'store']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
-Route::get('/{any}', function () {
+Route::get('/{any}', function (string $any) {
     if (auth()->check()) {
         return redirect('/dashboard');
-    } else {
-        return redirect('/login');
     }
+    return redirect('/login');
 })->where('any', '.*');
