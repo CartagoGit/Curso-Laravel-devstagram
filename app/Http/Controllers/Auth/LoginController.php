@@ -34,9 +34,10 @@ class LoginController extends Controller
             'password' => request()->password,
         ];
 
+
         if (
-            auth()->attempt((['email' => $credentials['email'], 'password' => $credentials['password']]))
-            || auth()->attempt((['username' => $credentials['username'], 'password' => $credentials['password']]))
+            auth()->attempt(['email' => $credentials['email'], 'password' => $credentials['password']], request()->remember)
+            || auth()->attempt(['username' => $credentials['username'], 'password' => $credentials['password']], request()->remember)
         ) {
             //* Redireccionar
             return redirect()->route('dashboard');

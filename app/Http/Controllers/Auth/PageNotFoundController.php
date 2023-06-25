@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
-class CheckAuthController extends Controller
+class PageNotFoundController extends Controller
 {
     //
     static public function redirectAuth(): RedirectResponse

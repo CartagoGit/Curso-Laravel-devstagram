@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Auth\CheckAuthController;
+use App\Http\Controllers\Auth\PageNotFoundController;
 use App\Http\Controllers\Auth\LogoutController;
-use App\Http\Controllers\Main\DashboardController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,16 +18,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     // return view('principal');
-//     if(auth()->user()){
-//         return redirect('dashboard');
-//     }
-
-//     return redirect('login');
-// });
-
-
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
@@ -37,7 +27,7 @@ Route::post('/login', [LoginController::class, 'store']);
 
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [PostController::class, 'index'])->name('dashboard');
 
 //* Devuelve cualquier vista que no coincida a login o a dashboard dependiendo si está autenticado o no
-Route::get('/{any}', [CheckAuthController::class, 'redirectAuth'])->where('any', '.*')->name('root');
+Route::get('/{any}', [PageNotFoundController::class, 'redirectAuth'])->where('any', '.*')->name('root');

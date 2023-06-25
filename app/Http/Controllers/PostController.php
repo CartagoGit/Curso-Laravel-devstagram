@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Main;
-use App\Http\Controllers\Controller;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class PostController extends Controller
 {
     public function __construct(){
         $this->middleware(['auth']);
