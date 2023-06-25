@@ -5,9 +5,15 @@
 @endsection
 
 @section('contenido')
-    <div class="md:flex md:items-center px-5 lg:px-20">
-        <div class="md:w-1/2 px-10">
-            imagen aqui
+    <div class="flex flex-col md:flex-row md:items-center px-5 lg:px-20">
+        <div class="md:w-1/2 px-10 flex min-h-[200px] self-stretch">
+            <form action="/images" id="dropzone"
+                class="dropzone border-dashed border-gray-200 rounded-xl
+            border-[4px] w-full rounder flex flex-col justify-center bg-gray-50 shadow-xl items-center cursor-pointer hover:opacity-70 transition-opacity">
+                <div class="dz-message text-gray-500 uppercase font-bold" data-dz-message>
+                    <span>Suelta <span class="underline">aquí</span> tu imagen</span>
+                </div>
+            </form>
         </div>
         <div class="md:w-1/2 p-10  bg-white rounded-lg shadow-xl mt-10 md:mt-0">
             <form action="{{ route('register') }}" method="POST" novalidate>
