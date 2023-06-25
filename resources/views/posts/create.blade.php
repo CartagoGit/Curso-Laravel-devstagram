@@ -17,7 +17,7 @@
                         Título de la publicación
                     </label>
                     <input id="titulo" type="text" name="titulo" placeholder="Título de la publicación"
-                        class="border p-3 w-full rounded-lg @error('titulo') border-red-500 @enderror"
+                        class="border p-3 w-full rounded-lg focus:outline-gray-300 @error('titulo') border-red-500 @enderror"
                         value="{{ old('titulo') }}" />
                     @error('titulo')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center w-full">{{ $message }}</p>
@@ -30,7 +30,7 @@
                         Descripción de la publicación
                     </label>
                     <textarea id="descripcion" type="text" name="descripcion" placeholder="Descripción de la publicación"
-                        class="border p-3 w-full rounded-lg @error('descripcion') border-red-500 @enderror">{{ old('descripcion') }}</textarea>
+                        class="border p-3 w-full rounded-lg focus:outline-gray-300  @error('descripcion') border-red-500 @enderror">{{ old('descripcion') }}</textarea>
                     @error('descripcion')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center w-full">{{ $message }}</p>
                     @enderror

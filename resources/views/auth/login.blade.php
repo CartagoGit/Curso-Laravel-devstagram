@@ -19,7 +19,7 @@
                         Nick o email del usuario
                     </label>
                     <input id="credencial" type="text" name="credencial" placeholder="Nick o email del usuario"
-                        class="border p-3 w-full rounded-lg @error('credencial') border-red-500 @enderror"
+                        class="border p-3 w-full rounded-lg focus:outline-gray-300 @error('credencial') border-red-500  @enderror"
                         value="{{ old('credencial') }}" />
                     @error('credencial')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center w-full">{{ $message }}</p>
@@ -32,7 +32,7 @@
                         Contraseña
                     </label>
                     <input id="password" type="password" name="password" placeholder="Contraseña"
-                        class="border p-3 w-full rounded-lg @error('password') border-red-500 @enderror"
+                        class="border p-3 w-full rounded-lg focus:outline-gray-300 @error('password') border-red-500   @enderror"
                         value="{{ old('password') }}" />
                     @error('password')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center w-full">{{ $message }}</p>
@@ -40,14 +40,15 @@
                 </div>
 
                 <div class="mb-5">
-                    <input type="checkbox" name="remember" id="remember"/>
+                    <input type="checkbox" name="remember" id="remember" />
                     <label class="text-gray-500 text-sm" for="remember">Recordar</label>
                 </div>
 
 
 
-                <input type="submit" value="Iniciar sesión"
-                    class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase w-full font-bold p-3 text-white rounded-lg" />
+                <button type="submit"
+                    class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase w-full font-bold p-3 text-white rounded-lg">Iniciar
+                    sesión</button>
                 @if (@session('loginFailed'))
                     <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center w-full">
                         {{ @session('loginFailed') }}</p>

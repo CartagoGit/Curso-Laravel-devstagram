@@ -18,7 +18,8 @@
                         Nombre
                     </label>
                     <input id="nombre" type="text" name="nombre" placeholder="Nombre"
-                        class="border p-3 w-full rounded-lg @error('nombre') border-red-500 @enderror"
+                        class="border p-3 w-full rounded-lg  focus:outline-gray-300
+                        @error('nombre') border-red-500  @enderror"
                         value="{{ old('nombre') }}" />
                     @error('nombre')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center w-full">{{ $message }}</p>
@@ -31,7 +32,7 @@
                         Nick del usuario
                     </label>
                     <input id="nick" type="text" name="nick" placeholder="Nick del usuario"
-                        class="border p-3 w-full rounded-lg @error('nick') border-red-500 @enderror"
+                        class="border p-3 w-full rounded-lg  focus:outline-gray-300 @error('nick') border-red-500 @enderror"
                         value="{{ old('nick') }}" />
                     @error('nick')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center w-full">{{ $message }}</p>
@@ -43,7 +44,7 @@
                         Email
                     </label>
                     <input id="email" type="text" name="email" placeholder="Email"
-                        class="border p-3 w-full rounded-lg @error('email') border-red-500 @enderror"
+                        class="border p-3 w-full rounded-lg focus:outline-gray-300 @error('email') border-red-500 @enderror"
                         value="{{ old('email') }}" />
                     @error('email')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center w-full">{{ $message }}</p>
@@ -55,7 +56,7 @@
                         Contraseña
                     </label>
                     <input id="password" type="password" name="password" placeholder="Contraseña"
-                        class="border p-3 w-full rounded-lg @error('password') border-red-500 @enderror"
+                        class="border p-3 w-full rounded-lg focus:outline-gray-300  @error('password') border-red-500 @enderror"
                         value="{{ old('password') }}" />
                     @error('password')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center w-full">{{ $message }}</p>
@@ -68,7 +69,7 @@
                     </label>
                     <input id="password_confirmation" type="password" name="password_confirmation"
                         placeholder="Contraseña de verificación"
-                        class="border p-3 w-full rounded-lg @error('password') border-red-500 @enderror"
+                        class="border  focus:outline-gray-300 p-3 w-full rounded-lg @error('password') border-red-500 @enderror"
                         value="{{ old('password_confirmation') }}" />
 
                 </div>
