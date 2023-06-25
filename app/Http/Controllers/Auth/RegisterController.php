@@ -13,7 +13,9 @@ class RegisterController extends Controller
 
     public function index()
     {
-        auth()->logout();
+        if (auth()->check()) {
+            return redirect()->route('dashboard');
+        }
         return view('auth.register');
     }
 

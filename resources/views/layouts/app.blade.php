@@ -16,13 +16,18 @@
         <div class="container mx-auto flex justify-between items-center">
 
             <h1 class="text-3xl font-black"> <a href="/">DevStagram </a> </h1>
-
-            <nav class="flex gap-3 sx:gap-5 sm:gap-10">
-                <a class="font-bold uppercase text-gray-600 text-sm " href="/login">Iniciar sesión</a>
-                <a class="font-bold uppercase text-gray-600 text-sm" href="{{ route('register') }}">
-                    Crear Cuenta
-                </a>
-            </nav>
+            @if (!auth()->check())
+                <nav class="flex gap-3 sx:gap-5 sm:gap-10">
+                    <a class="font-bold uppercase text-gray-600 text-sm " href="/login">Iniciar sesión</a>
+                    <a class="font-bold uppercase text-gray-600 text-sm" href="{{ route('register') }}">
+                        Crear Cuenta
+                    </a>
+                </nav>
+            @else
+                <nav class="flex gap-3 sx:gap-5 sm:gap-10">
+                    <a class="font-bold uppercase text-gray-600 text-sm " href="/login">Cerrar sesión</a>
+                </nav>
+            @endif
         </div>
     </header>
 

@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\CheckAuthController;
 
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Main\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,10 +37,5 @@ Route::post('/login', [LoginController::class, 'store']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-
-Route::get('/{any}', function (string $any) {
-    if (auth()->check()) {
-        return redirect('/dashboard');
-    }
-    return redirect('/login');
-})->where('any', '.*');
+//* Devuelve cualquier vista que no coincida a login o a dashboard dependiendo si está autenticado o no
+Route::get('/{any}', [CheckAuthController::class, 'redirectAuth'])->where('any', '.*')->name('root');
