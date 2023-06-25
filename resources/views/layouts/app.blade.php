@@ -18,13 +18,17 @@
             <h1 class="text-3xl font-black"> <a href="/">DevStagram </a> </h1>
             <nav class="flex gap-3 sx:gap-5 sm:gap-10">
                 @if (auth()->check())
-                    <div class="font-bold  text-gray-600 text-sm">
+                    <div class="font-bold  text-gray-600">
                         Hola <span class="font-normal">
                             {{ auth()->user()->name }}
                         </span>
                     </div>
-                    <a class="font-bold uppercase text-gray-600 text-sm " href="{{ route('logout') }}">Cerrar
-                        sesión</a>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button class="font-bold uppercase text-gray-600 text-sm ">
+                            Cerrar sesión
+                        </button>
+                    </form>
                 @else
                     <a class="font-bold uppercase text-gray-600 text-sm " href="/login">Iniciar sesión</a>
                     <a class="font-bold uppercase text-gray-600 text-sm" href="{{ route('register') }}">
