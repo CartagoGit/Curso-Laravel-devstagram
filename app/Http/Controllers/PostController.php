@@ -18,6 +18,8 @@ class PostController extends Controller
             $actualUser = auth()->user();
             return redirect('/' . $actualUser->path);
         }
-        return view('main.dashboard');
+        $user = User::where('path', $userPath)->first();
+       
+        return view('main.dashboard', ['user' => $user]);
     }
 }
