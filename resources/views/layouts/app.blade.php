@@ -23,7 +23,7 @@
                             {{ auth()->user()->name }}
                         </span>
                     </div>
-                    <a class="font-bold uppercase text-gray-600 text-sm " href="{{ auth()->logout() }}">Cerrar
+                    <a class="font-bold uppercase text-gray-600 text-sm " href="{{ route('logout') }}">Cerrar
                         sesión</a>
                 @else
                     <a class="font-bold uppercase text-gray-600 text-sm " href="/login">Iniciar sesión</a>
