@@ -1,7 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\User;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\Auth\LoginController;
@@ -30,7 +29,6 @@ Route::post('/login', [LoginController::class, 'store']);
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
 Route::get('/{userPath}', [PostController::class, 'index'])->name('posts.index');
-
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 
 //* Devuelve cualquier vista que no coincida a login o a dashboard dependiendo si está autenticado o no
