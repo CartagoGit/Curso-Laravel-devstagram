@@ -1,14 +1,18 @@
 @extends('layouts.app')
 
+@push('styles')
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+@endpush
+
 @section('titulo')
     Crear una nueva publicación
 @endsection
-
 @section('contenido')
     <div class="flex flex-col md:flex-row md:items-center px-5 lg:px-20">
         <div class="md:w-1/2 px-10 flex min-h-[200px] self-stretch">
-            <form action="/images" id="dropzone"
-                class="dropzone border-dashed border-gray-200 rounded-xl border-[4px]w-full rounder flex flex-col justify-center bg-gray-50shadow-xl items-center cursor-pointer hover:opacity-70 transition-opacity">
+            <form action="{{ route('images.store') }}" method="POST" enctype="multipart" id="dropzone"
+                class="dropzone border-dashed border-gray-200 rounded-xl border-[4px] w-full rounder flex flex-col justify-center bg-gray-50 shadow-xl items-center cursor-pointer hover:opacity-70 transition-opacity">
+					 @csrf
                 <div class="dz-message text-gray-500 uppercase font-bold" data-dz-message>
                     <span>
                         Suelta
