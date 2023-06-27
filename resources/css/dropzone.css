@@ -1,0 +1,7 @@
+.dropzone .dz-error-message {
+	/* Modifica la posición o tamaño del popover para evitar que cubra el botón de eliminar */
+	/* Por ejemplo, puedes ajustar la posición hacia arriba */
+	bottom: -80px !important;
+	top: unset !important;
+	text-align: center !important;
+}

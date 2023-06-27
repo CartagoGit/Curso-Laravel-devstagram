@@ -10,6 +10,15 @@ export const dropzone = new Dropzone('#dropzone', {
 	maxFiles: 1,
 	maxFilesize: 3,
 	uploadMultiple: false,
+	
+	init: function () {
+		this.on('addedfile', function (file) {
+			// Si se agrega una segunda imagen, remueve la imagen anterior
+			if (this.files.length > 1) {
+				this.removeFile(this.files[0]);
+			}
+		});
+	},
 });
 
 // dropzone.on('sending', function (file, xhr, formData) {});
