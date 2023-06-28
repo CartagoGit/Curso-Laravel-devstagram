@@ -5,3 +5,30 @@
 	top: unset !important;
 	text-align: center !important;
 }
+.dropzone .dz-preview {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	flex-direction: column;
+	max-width: 500px;
+	max-height: 500px;
+}
+
+.dropzone .dz-preview .dz-image {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+}
+
+.dropzone .dz-preview .dz-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}

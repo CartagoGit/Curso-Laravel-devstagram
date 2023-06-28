@@ -10,7 +10,9 @@ export const dropzone = new Dropzone('#dropzone', {
 	maxFiles: 1,
 	maxFilesize: 3,
 	uploadMultiple: false,
-
+	parallelUploads: 1,
+	thumbnailWidth: '500',
+	thumbnailHeight: '500',
 	init: function () {
 		this.on('addedfile', function (file) {
 			if (this.files.length > 1) this.removeFile(this.files[0]);
