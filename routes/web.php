@@ -31,8 +31,10 @@ Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
 Route::get('/{userPath}', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+
+Route::post('/images', [ImageController::class, 'store'])->name('images.store');
 
 //* Devuelve cualquier vista que no coincida a login o a dashboard dependiendo si está autenticado o no
 Route::get('/{any}', [PageNotFoundController::class, 'redirectAuth'])->where('any', '.*')->name('root');
 
-Route::post('/images', [ImageController::class, 'store'])->name('images.store');

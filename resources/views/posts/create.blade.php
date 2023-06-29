@@ -2,7 +2,7 @@
 
 @push('styles')
     <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
-	 @vite('resources/css/dropzone.css')
+    @vite('resources/css/dropzone.css')
 @endpush
 
 @section('titulo')
@@ -13,7 +13,7 @@
         <div class="md:w-1/2 px-10 flex min-h-[200px] self-stretch">
             <form action="{{ route('images.store') }}" method="POST" enctype="multipart" id="dropzone"
                 class="dropzone border-dashed border-gray-200 rounded-xl border-[4px] w-full rounder flex flex-col justify-center bg-gray-50 shadow-xl items-center cursor-pointer hover:opacity-70 transition-opacity">
-					 @csrf
+                @csrf
                 <div class="dz-message text-gray-500 uppercase font-bold" data-dz-message>
                     <span>
                         Suelta
@@ -27,7 +27,7 @@
         </div>
         <div class="md:w-1/2 p-10  bg-white rounded-lg shadow-xl mt-10 md:mt-0">
             <form action="
-				{{ route('register') }}" method="POST" novalidate>
+				{{ route('posts.store') }}" method="POST" novalidate>
                 @csrf
                 <div class="mb-5">
                     <label for="titulo" class="mb-2 block uppercase text-gray-500 font-bold">
