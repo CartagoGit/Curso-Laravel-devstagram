@@ -17,11 +17,12 @@ class PostFactory extends Factory
 	public function definition(): array
 	{
 		return [
-			//
-			'titulo' => $this->faker->sentence(),
-			'descripcion' => $this->faker->paragraph(),
-			'imagen' => $this->faker->uuid() . 'jpg',
-			'user_id' => $this->faker->randomElement([1, 2, 3]),
+			//* -> Para cargar los alias de composer directamente para wsl
+			// composer dump-autoload
+			'title' => $this->faker->sentence(),
+			'description' => $this->faker->paragraph(),
+			'image' => $this->faker->uuid() . 'jpg',
+			'user_id' => $this->faker->randomElement([1, 2, 4, 5, 6, 7]),
 		];
 	}
 }
