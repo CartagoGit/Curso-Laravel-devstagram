@@ -9,19 +9,19 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class PostFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
-    {
-        return [
-            //
-				'titulo' => $this->faker->sentence(),
-				'descripcion' => $this->faker->paragraph(),
-				'imagen' => $this->faker->imageUrl(),
-				'user_id' => $this->faker->randomDigit(),
-        ];
-    }
+	/**
+	 * Define the model's default state.
+	 *
+	 * @return array<string, mixed>
+	 */
+	public function definition(): array
+	{
+		return [
+			//
+			'titulo' => $this->faker->sentence(),
+			'descripcion' => $this->faker->paragraph(),
+			'imagen' => $this->faker->uuid() . 'jpg',
+			'user_id' => $this->faker->randomElement([1, 2, 3]),
+		];
+	}
 }
