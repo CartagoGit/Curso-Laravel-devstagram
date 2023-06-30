@@ -45,6 +45,15 @@ class PostController extends Controller
 			'image' => $request->imagen,
 		]);
 
+		//* Otra forma
+
+		// $post = new Post();
+		// $post->user_id = auth()->id();
+		// $post->title = $request->titulo;
+		// $post->description = $request->descripcion;
+		// $post->image = $request->imagen;
+		// $post->save();
+
 
 		return redirect()->route('posts.index', auth()->user()->path);
 	}
