@@ -59,6 +59,7 @@ export const dropzone = new Dropzone('#dropzone', {
 				.classList.remove('border-green-300');
 			document.querySelector('#dropzone').classList.remove('border-red-300');
 			document.querySelector('[name="imagen"]').value = null;
+			
 		});
 	},
 });

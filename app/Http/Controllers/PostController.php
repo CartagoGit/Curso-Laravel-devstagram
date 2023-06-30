@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
 
@@ -37,8 +38,14 @@ class PostController extends Controller
 			'imagen' => 'required'
 		]);
 
+		Post::create([
+			'user_id' => auth()->id(),
+			'title' => $request->titulo,
+			'description' => $request->descripcion,
+			'image' => $request->imagen,
+		]);
 
 
-		return back();
+		return redirect()->route('posts.index', auth()->user()->path);
 	}
 }
