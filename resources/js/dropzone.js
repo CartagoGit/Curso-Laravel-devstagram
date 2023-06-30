@@ -21,21 +21,24 @@ export const dropzone = new Dropzone('#dropzone', {
 			this.removeAllFiles();
 			this.addFile(file);
 		});
-		this.on('error', function (file, response) {
+		this.on('error', function (_file, response) {
 			console.log(response);
 			if (response) {
 				document.getElementById('dropzone').classList.add('border-red-300');
 			}
 		});
-		this.on('success', function (file, response) {
+		this.on('success', function (_file, response) {
+			console.log(response);
 			document.querySelector('#dropzone').classList.remove('border-red-300');
 			document.querySelector('#dropzone').classList.add('border-green-300');
+			document.querySelector('[name="imagen"]').value = response.data.path_full;
 		});
 		this.on('removedfile', function (file, response) {
 			document
 				.querySelector('#dropzone')
 				.classList.remove('border-green-300');
 			document.querySelector('#dropzone').classList.remove('border-red-300');
+			document.querySelector('[name="imagen"]').value = null;
 		});
 	},
 });
