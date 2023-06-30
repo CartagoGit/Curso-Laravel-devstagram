@@ -18,7 +18,8 @@ class ImageController extends Controller
 		$imagenServidor = Image::make($image);
 		$imagenServidor->fit(1000, 1000);
 		// $imagenPath = public_path('uploads') . '/images/' . $nombreImage;
-		$rutaCarpeta = public_path('uploads/images');
+		$baseCarpeta = 'uploads/images';
+		$rutaCarpeta = public_path($baseCarpeta);
 		if (!file_exists($rutaCarpeta)) {
 			mkdir($rutaCarpeta, 0755, true);
 		}
@@ -34,7 +35,9 @@ class ImageController extends Controller
 			'original_name' => $image->getClientOriginalName(),
 			'name' => $nombreImage,
 			'path' => $rutaCarpeta,
+			'base_path' => $baseCarpeta,
 			'path_full' => $imagenPath,
+			'public_path' => '/' . $baseCarpeta . '/' . $nombreImage,
 		];
 
 		return response()->json(['data' => $imageData]);
