@@ -38,14 +38,17 @@
         <h2 class="text-4xl text-center font-black my-10">
             Publicaciones de {{ $user->username }}
         </h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
 
-        @foreach ($posts as $post)
-            <div>
-                {{ $post->title }}
-                <a href="">
-                    <img src="{{ $post->image }}" alt="Imagen de la publicación {{ $post->title }}">
-                </a>
-            </div>
-        @endforeach
+            @foreach ($posts as $post)
+                <div>
+                    {{ $post->title }}
+                    <a href="">
+                        <img src="{{ $post->image }}" alt="Imagen de la publicación {{ $post->title }}">
+                    </a>
+                    {{ $post->description }}
+                </div>
+            @endforeach
+        </div>
     </section>
 @endsection
