@@ -34,4 +34,18 @@
             </div>
         </div>
     </div>
+    <section class="container mx-auto mt-10">
+        <h2 class="text-4xl text-center font-black my-10">
+            Publicaciones de {{ $user->username }}
+        </h2>
+
+        @foreach ($posts as $post)
+            <div>
+                {{ $post->title }}
+                <a href="">
+                    <img src="{{ $post->image }}" alt="Imagen de la publicación {{ $post->title }}">
+                </a>
+            </div>
+        @endforeach
+    </section>
 @endsection
