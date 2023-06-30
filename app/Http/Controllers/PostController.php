@@ -38,12 +38,12 @@ class PostController extends Controller
 			'imagen' => 'required'
 		]);
 
-		Post::create([
-			'user_id' => auth()->id(),
-			'title' => $request->titulo,
-			'description' => $request->descripcion,
-			'image' => $request->imagen,
-		]);
+		// Post::create([
+		// 	'user_id' => auth()->id(),
+		// 	'title' => $request->titulo,
+		// 	'description' => $request->descripcion,
+		// 	'image' => $request->imagen,
+		// ]);
 
 		//* Otra forma
 
@@ -53,6 +53,15 @@ class PostController extends Controller
 		// $post->description = $request->descripcion;
 		// $post->image = $request->imagen;
 		// $post->save();
+
+
+		//* Una tercera forma de guardar los datos
+		$request->user()->posts()->create([
+			'title' => $request->titulo,
+			'description' => $request->descripcion,
+			'image' => $request->imagen,
+			// 'user_id' => auth()->id(),
+		]);
 
 
 		return redirect()->route('posts.index', auth()->user()->path);
