@@ -38,7 +38,7 @@
         <h2 class="text-4xl text-center font-black my-10">
             Publicaciones de {{ $user->username }}
         </h2>
-        <div class="grid p-10 md:p-0   md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div class="grid p-15 md:p-0  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
 
             @foreach ($posts as $post)
                 <div>

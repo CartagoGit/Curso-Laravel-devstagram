@@ -25,6 +25,7 @@ class PostController extends Controller
 		$posts = Post::where('user_id', $user->id)->latest()->paginate(5);
 
 
+
 		return view('main.dashboard', ['user' => $user, 'posts' => $posts]);
 	}
 
