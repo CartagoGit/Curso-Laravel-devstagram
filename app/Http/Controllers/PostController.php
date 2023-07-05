@@ -16,15 +16,12 @@ class PostController extends Controller
 	public function index(string $userPath)
 
 	{
-
 		if (!User::where('path', $userPath)->exists()) {
 			$actualUser = auth()->user();
 			return redirect('/' . $actualUser->path);
 		}
 		$user = User::where('path', $userPath)->first();
 		$posts = Post::where('user_id', $user->id)->latest()->paginate(10);
-
-
 
 		return view('main.dashboard', ['user' => $user, 'posts' => $posts]);
 	}
