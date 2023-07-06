@@ -41,12 +41,12 @@
         <div class="grid p-15 md:p-0  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
 
             @foreach ($posts as $post)
-                <div>
-                    {{ $post->title }}
+                <div class="border border-gray-300 rounded-xl flex flex-col overflow-hidden shadow">
+                    <span class="p-2 w-full text-center bg-gray-700 text-gray-100">{{ $post->title }}</span>
                     <a href="">
                         <img src="{{ $post->image }}" alt="Imagen de la publicación {{ $post->title }}">
                     </a>
-                    {{ $post->description }}
+                    <span class="p-2 bg-white">{{ $post->description }}</span>
                 </div>
             @endforeach
         </div>
