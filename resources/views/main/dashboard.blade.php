@@ -38,17 +38,27 @@
         <h2 class="text-4xl text-center font-black my-10">
             Publicaciones de {{ $user->username }}
         </h2>
-        <div class="grid p-15 md:p-0  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        @if ($posts->count())
+            <div class="grid p-15 md:p-0  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
 
-            @foreach ($posts as $post)
-                <div class="border border-gray-300 rounded-xl flex flex-col overflow-hidden shadow">
-                    <span class="p-2 w-full text-center bg-gray-700 text-gray-100">{{ $post->title }}</span>
-                    <a href="">
-                        <img src="{{ $post->image }}" alt="Imagen de la publicación {{ $post->title }}">
-                    </a>
-                    <span class="p-2 bg-white">{{ $post->description }}</span>
-                </div>
-            @endforeach
-        </div>
+                @foreach ($posts as $post)
+                    <div class="border border-gray-300 rounded-xl flex flex-col overflow-hidden shadow">
+                        <span class="p-2 w-full text-center bg-gray-700 text-gray-100">{{ $post->title }}</span>
+                        <a href="">
+                            <img src="{{ $post->image }}" alt="Imagen de la publicación {{ $post->title }}">
+                        </a>
+                        <span class="p-2 bg-white">{{ $post->description }}</span>
+                    </div>
+                @endforeach
+            </div>
+        @else
+		  <div class="flex justify-center">
+			<div class="p-4 border-4 border-dashed border-gray-400 rounded-xl bg-white shadow">
+
+				<p class="text-gray-600 uppercase text-sm text-center font-bold">No hay posts</p>
+			</div>
+
+		  </div>
+        @endif
     </section>
 @endsection
