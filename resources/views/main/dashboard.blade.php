@@ -39,7 +39,7 @@
             Publicaciones de {{ $user->username }}
         </h2>
         @if ($posts->count())
-            <div class="grid p-15 md:p-0  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div class="grid p-15 md:p-0  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-3/4 md:w-full">
 
                 @foreach ($posts as $post)
                     <div class="border border-gray-300 rounded-xl flex flex-col overflow-hidden shadow">
@@ -52,13 +52,13 @@
                 @endforeach
             </div>
         @else
-		  <div class="flex justify-center">
-			<div class="p-4 border-4 border-dashed border-gray-400 rounded-xl bg-white shadow">
+            <div class="flex justify-center">
+                <div class="p-4 border-4 border-dashed border-gray-400 rounded-xl bg-white shadow">
 
-				<p class="text-gray-600 uppercase text-sm text-center font-bold">No hay posts</p>
-			</div>
+                    <p class="text-gray-600 uppercase text-sm text-center font-bold">No hay posts</p>
+                </div>
 
-		  </div>
+            </div>
         @endif
     </section>
 @endsection
