@@ -39,7 +39,7 @@
             Publicaciones de {{ $user->username }}
         </h2>
         @if ($posts->count())
-            <div class="grid p-15 md:p-0  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-3/4 md:w-full">
+            <div class="grid p-15 md:p-0 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-3/4 md:w-full">
 
                 @foreach ($posts as $post)
                     <div class="border border-gray-300 rounded-xl flex flex-col overflow-hidden shadow">
@@ -48,6 +48,7 @@
                             <img src="{{ $post->image }}" alt="Imagen de la publicación {{ $post->title }}">
                         </a>
                         <span class="p-2 bg-white">{{ $post->description }}</span>
+                        <span class="">Fecha post: {{ $post->created_at }}</span>
                     </div>
                 @endforeach
             </div>
