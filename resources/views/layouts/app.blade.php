@@ -20,7 +20,7 @@
             <h1 class="text-3xl font-black"> <a href="/">DevStagram </a> </h1>
             <nav class="flex w-full justify-between gap-3 md:w-auto md:justify-end sx:gap-5 sm:gap-10 pt-5 md:pt-0">
                 @if (auth()->check())
-                    <a class="flex items-center gap-2 bg-white border p-2 text-gray-600 rounded text-sm uppercase font-bold cursor-pointer"
+                    <a class="flex items-center gap-2 bg-white border p-2 text-gray-600 rounded text-sm uppercase font-bold cursor-pointer transition-all duration-300 hover:ring hover:ring-gray-500"
                         href="{{ route('posts.create') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
@@ -34,7 +34,7 @@
                     </a>
                     <div class="flex gap-4">
 
-                        <a class="font-bold text-gray-600 items-center flex gap-2"
+                        <a class="font-bold text-gray-600 items-center flex gap-2 transition-all duration-300 hover:ring hover:ring-gray-500 p-3 rounded-lg"
                             href={{ route('posts.index', auth()->user()->path) }}>
                             Hola <span class="font-normal">
                                 {{ auth()->user()->name }}
@@ -42,14 +42,14 @@
                         </a>
                         <form class="flex items-center"action="{{ route('logout') }}" method="POST">
                             @csrf
-                            <button class="font-bold uppercase text-gray-600 text-sm ">
+                            <button class="font-bold uppercase text-gray-600 text-sm transition-all duration-300 hover:ring hover:ring-gray-500 p-3 rounded-lg ">
                                 Cerrar sesión
                             </button>
                         </form>
                     </div>
                 @else
-                    <a class="font-bold uppercase text-gray-600 text-sm " href="/login">Iniciar sesión</a>
-                    <a class="font-bold uppercase text-gray-600 text-sm" href="{{ route('register') }}">
+                    <a class="font-bold uppercase text-gray-600 text-sm transition-all duration-300 hover:ring hover:ring-gray-500 p-3 rounded-lg" href="/login">Iniciar sesión</a>
+                    <a class="font-bold uppercase text-gray-600 text-sm transition-all duration-300 hover:ring hover:ring-gray-500 p-3 rounded-lg" href="{{ route('register') }}">
                         Crear Cuenta
                     </a>
                 @endif
