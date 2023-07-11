@@ -62,6 +62,7 @@
 
 
             </div>
+            <div>{{ $posts->links() }}</div>
         @else
             <div class="flex justify-center">
                 <div class="p-4 border-4 border-dashed border-gray-400 rounded-xl bg-white shadow">
