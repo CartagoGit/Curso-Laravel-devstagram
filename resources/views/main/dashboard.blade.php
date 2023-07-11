@@ -14,19 +14,21 @@
                 {{-- <p class="text-gray-700 text-2xl">{{ auth()->user()->name }}</p> --}}
                 <p class="text-gray-700 text-2xl mb-5">{{ $user->name }}</p>
                 <p class="text-gray-800 text-sm mb-3 font-bold">
-                    0
+                    <!-- REVIEW HARCODEADO DESDE POST CONTRROLLER -->
+                    {{ count($followers) }}
                     <span class="font-normal">
                         Seguidores
                     </span>
                 </p>
                 <p class="text-gray-800 text-sm mb-3 font-bold">
-                    0
+                    <!-- REVIEW HARCODEADO DESDE POST CONTRROLLER -->
+                    {{ count($followed) }}
                     <span class="font-normal">
                         Siguiendo
                     </span>
                 </p>
                 <p class="text-gray-800 text-sm mb-3 font-bold">
-                    0
+                    {{ $posts->count() }}
                     <span class="font-normal">
                         Posts
                     </span>
@@ -61,11 +63,11 @@
                 @endforeach
 
 
-					</div>
-					<div class="flex justify-center">
+            </div>
+            <div class="flex justify-center">
 
-						<div class="w-96">{{ $posts->links() }}</div>
-					</div>
+                <div class="w-96">{{ $posts->links() }}</div>
+            </div>
         @else
             <div class="flex justify-center">
                 <div class="p-4 border-4 border-dashed border-gray-400 rounded-xl bg-white shadow">
