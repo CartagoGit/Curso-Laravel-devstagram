@@ -21,7 +21,7 @@ class PostController extends Controller
 			return redirect('/' . $actualUser->path);
 		}
 		$user = User::where('path', $userPath)->first();
-		$posts = Post::where('user_id', $user->id)->paginate(10);
+		$posts = Post::where('user_id', $user->id)->paginate();
 
 		return view('main.dashboard', ['user' => $user, 'posts' => $posts]);
 	}
