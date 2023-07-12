@@ -74,7 +74,7 @@ class PostController extends Controller
 		return redirect()->route('posts.index', auth()->user()->path);
 	}
 
-	public function show(int $postId)
+	public function show(string $userPath, int $postId)
 	{
 		$post = Post::find($postId);
 		if (!$post) {

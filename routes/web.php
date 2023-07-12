@@ -32,7 +32,7 @@ Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 Route::get('/{user:path}', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
-Route::get('/posts/{post:id}', [PostController::class, 'show'])->name('posts.show');
+Route::get('/{user:path}/posts/{post:id}', [PostController::class, 'show'])->name('posts.show');
 
 Route::post('/images', [ImageController::class, 'store'])->name('images.store');
 

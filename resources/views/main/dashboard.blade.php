@@ -43,7 +43,7 @@
         @if ($posts->count())
             <div class="flex flex-wrap justify-center ">
                 @foreach ($posts as $post)
-                    <a href="{{ route('posts.show', $post) }}"
+                    <a href="{{ route('posts.show', [$user, $post]) }}"
                         class="border border-gray-700 rounded-xl flex flex-col overflow-hidden shadow bg-gray-700 mx-4 my-4
 								flex basis-5/6 sm:basis-2/3 md:basis-2/5 lg:basis-1/4 xl:basis-1/5 cursor-pointer transition-all duration-300 hover:ring hover:ring-gray-500">
 
