@@ -16,7 +16,12 @@
             <div>
                 <div class="flex justify-between">
                     <span class="font-bold">{{ $post->user->username }}</span>
-                    <span class="text-right">0 Likes</span>
+                    <span class="text-right">
+                        0 Likes
+                        @if (auth()->check())
+                            <button>Boton Dar Like</button>
+                        @endif
+                    </span>
                 </div>
                 <p class="text-sm text-gray-500">{{ $post->created_at->diffForHumans() }}</p>
                 <p class="mt-5 rounded-xl outline outline-2 outline-gray-600 p-3 bg-white shadow-lg">
@@ -27,8 +32,7 @@
         </div>
         <form class="w-4/5 sm:w-[45%] flex flex-col">
             @csrf
-				@if (auth()->check())
-
+            @if (auth()->check())
                 <div class="shadow p-5 w-full rounded-lg bg-gray-200 flex flex-col h-full">
                     <p class="text-xl font-bold text-center mb-4">
                         Agregar comentario
@@ -51,7 +55,8 @@
                             </script>
                         </div>
                         @error('comment')
-                            <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center w-full">{{ $message }}</p>
+                            <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center w-full">{{ $message }}
+                            </p>
                         @enderror
                     </div>
                 </div>
@@ -60,13 +65,13 @@
                     Enviar comentario
                 </button>
             @else
-				<div class="p-5 w-full  grid place-items-center h-full">
-					<p class="shadow rounded-lg bg-sky-800 text-xl font-bold text-center text-white border-4 border-dashed border-gray-800 p-8 mb-4">
-						 Solo usuarios autenticados pueden hacer comentarios
-					</p>
-				</div>
-
-				@endif
+                <div class="p-5 w-full grid place-items-center h-full">
+                    <p
+                        class="shadow rounded-lg bg-sky-800 text-xl font-bold text-center text-white border-4 border-dashed border-gray-800 p-8 mb-4">
+                        Solo usuarios autenticados pueden hacer comentarios
+                    </p>
+                </div>
+            @endif
         </form>
         <div class="shadow p-5 mb-5 rounded-lg bg-gray-800 text-white w-4/5 sm:w-[calc(90%+1rem)] sm:w-full">
             <p class="text-xl font-bold text-center mb-4">
