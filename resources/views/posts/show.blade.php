@@ -5,8 +5,8 @@
 @endsection
 
 @section('contenido')
-    <div class="container mx-auto flex">
-        <div class="md:w-1/2">
+    <div class="container mx-auto flex flex-wrap justify-center">
+        <div class="w-4/5 sm:w-[45%] ">
             <div class="flex justify-center w-full">
                 <img class="rounded-xl border-4 border-dashed  border-gray-300 sm:max-h-[400px] shadow-lg" src="{{ $post->image }}"
                     alt="Imagen de la publicación {{ $post->title }}">
@@ -25,7 +25,7 @@
                 </p>
             </div>
         </div>
-        <div class="md:w-1/2">
+        <div class="w-4/5 sm:w-1/2">
         </div>
     </div>
 @endsection
