@@ -50,7 +50,7 @@
                         <textarea id="descripcion" type="text" name="descripcion" minlength="10" maxlength="2200"
                             placeholder="Descripción de la publicación" oninput="updateDescripcionLength(this)"
                             class="border p-3 w-full rounded-lg focus:outline-gray-300 resize-y h-[200px] min-h-[100px] max-h-[500px]  @error('descripcion') border-red-500 @enderror">{{ old('descripcion') }}</textarea>
-                        <span class="absolute text-xs right-0 -bottom-3 text-gray-400">
+                        <span class="absolute text-xs right-0 -bottom-4 text-gray-400">
                             <span id="descripcion-length">
                                 {{ strlen(old('descripcion')) }}
                             </span>/2200
