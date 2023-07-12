@@ -16,6 +16,7 @@ class PostController extends Controller
 	public function index(string $userPath)
 
 	{
+
 		if (!User::where('path', $userPath)->exists()) {
 			$actualUser = auth()->user();
 			return redirect('/' . $actualUser->path);
@@ -72,4 +73,11 @@ class PostController extends Controller
 
 		return redirect()->route('posts.index', auth()->user()->path);
 	}
+
+	public function show(Post $post)
+	{
+		return view('posts.show', ['post' => $post]);
+	}
+
+
 }
