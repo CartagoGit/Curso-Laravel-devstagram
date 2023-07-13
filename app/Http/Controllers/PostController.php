@@ -76,6 +76,7 @@ class PostController extends Controller
 
 	public function show(string $userPath, int $postId)
 	{
+
 		$post = Post::find($postId);
 		$user = User::where('path', $userPath)->first();
 

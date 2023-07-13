@@ -31,7 +31,7 @@
             </div>
         </div>
         <form class="w-4/5 sm:w-[45%] flex flex-col"
-            action="{{ route('comments.store', ['user' => $user, 'post' => $post]) }}">
+            action="{{ route('comments.store', ['user' => $user, 'post' => $post]) }}" method="POST">
             {{-- <form class="w-4/5 sm:w-[45%] flex flex-col" method="POST"> --}} @csrf
             @if (auth()->check())
                 <div class="shadow p-5 w-full rounded-lg bg-gray-200 flex flex-col h-full">
