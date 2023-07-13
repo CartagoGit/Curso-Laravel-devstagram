@@ -83,6 +83,21 @@
             <p class="text-xl font-bold text-center mb-4">
                 Comentarios
             </p>
+            <div class="h-full flex flex-col h-full">
+                @if ($post->comments->count() > 0)
+                    @foreach ($post->comments as $comment)
+                        <div class="relative flex flex h-full">
+                            <textarea disabled="true" type="text" name="comentario" minlength="10" maxlength="2200"
+                                class="border p-3 w-full rounded-lg focus:outline-gray-300 resize-y h-full"></textarea>
+
+                        </div>
+                    @endforeach
+                @else
+                    <p class="p-5 rounded-lg border-4 border-dashed border-gray-400 text-center bg-white text-black text-lg text-bold">No hay comentarios en la publicación</p>
+                @endif
+
+
+            </div>
         </div>
     </div>
 @endsection
