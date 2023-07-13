@@ -87,13 +87,32 @@
                 @if ($post->comments->count() > 0)
                     @foreach ($post->comments as $comment)
                         <div class="relative flex flex h-full">
-                            <textarea disabled="true" type="text" name="comentario" minlength="10" maxlength="2200"
-                                class="border p-3 w-full rounded-lg focus:outline-gray-300 resize-y h-full"></textarea>
+                            <div disabled="true" type="text" name="comentario" minlength="10" maxlength="2200"
+                                class="text-left border-2 border-sky-400 p-3 w-full rounded-lg resize-none bg-white text-black">{{ $comment->comment }}</div>
+
+                        </div>
+                        <div class="mt-2 mb-10">
+                            <div class="flex justify-between">
+                                <span class="font-bold">{{ $post->user->username }}
+                                    <span class="text-sm text-gray-500">
+                                        {{ $comment->created_at->diffForHumans() }}
+                                    </span>
+                                </span>
+                                <span class="text-right">
+                                    0 Likes
+                                    @if (auth()->check())
+                                        <button>Boton Dar Like</button>
+                                    @endif
+                                </span>
+                            </div>
+                            <p></p>
 
                         </div>
                     @endforeach
                 @else
-                    <p class="p-5 rounded-lg border-4 border-dashed border-gray-400 text-center bg-white text-black text-lg text-bold">No hay comentarios en la publicación</p>
+                    <p
+                        class="p-5 rounded-lg border-4 border-dashed border-gray-400 text-center bg-white text-black text-lg text-bold">
+                        No hay comentarios en la publicación</p>
                 @endif
 
 
