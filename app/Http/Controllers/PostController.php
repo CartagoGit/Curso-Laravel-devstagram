@@ -77,9 +77,11 @@ class PostController extends Controller
 	public function show(string $userPath, int $postId)
 	{
 		$post = Post::find($postId);
-		if (!$post) {
+		$user = User::where('path', $userPath)->first();
+
+		if (!$post || !$user) {
 			return redirect()->route('posts.index', auth()->user()->path);
 		}
-		return view('posts.show', ['post' => $post]);
+		return view('posts.show', ['user' => $user, 'post' => $post]);
 	}
 }

@@ -30,8 +30,9 @@
                 </p>
             </div>
         </div>
-        <form class="w-4/5 sm:w-[45%] flex flex-col">
-            @csrf
+        <form class="w-4/5 sm:w-[45%] flex flex-col"
+            action="{{ route('comments.store', ['user' => $user, 'post' => $post]) }}">
+            {{-- <form class="w-4/5 sm:w-[45%] flex flex-col" method="POST"> --}} @csrf
             @if (auth()->check())
                 <div class="shadow p-5 w-full rounded-lg bg-gray-200 flex flex-col h-full">
                     <p class="text-xl font-bold text-center mb-4">
@@ -41,7 +42,7 @@
                         <div class="relative flex flex h-full">
                             <textarea id="comment" type="text" name="comment" minlength="10" maxlength="2200"
                                 placeholder="Agregar comentario..." oninput="updateCommentLength(this)"
-                                class="border p-3 w-full rounded-lg focus:outline-gray-300 resize-y h-[200px] min-h-full h-full @error('comment') border-red-500 @enderror"></textarea>
+                                class="border p-3 w-full rounded-lg focus:outline-gray-300 resize-y  min-h-[100px] h-full max-h-[500px] @error('comment') border-red-500 @enderror"></textarea>
                             <span class="absolute text-xs right-0 -bottom-4 text-gray-700">
                                 <span id="comment-length">
                                     0
