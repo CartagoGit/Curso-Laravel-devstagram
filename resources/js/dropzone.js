@@ -2,7 +2,8 @@ import Dropzone from 'dropzone';
 
 Dropzone.autoDiscover = false;
 
-export const dropzone = new Dropzone('#dropzone', {
+const dropZoneElement = document.querySelector('#dropzone');
+export const dropzone = dropZoneElement && new Dropzone('#dropzone', {
 	// dictDefaultMessage: "Suelta tu imagen aquí",
 	acceptedFiles: '.jpg,.png,.jpeg,.gif,.bmp',
 	addRemoveLinks: true,
@@ -14,6 +15,7 @@ export const dropzone = new Dropzone('#dropzone', {
 	thumbnailWidth: '500',
 	thumbnailHeight: '500',
 	init: function () {
+		if (document.querySelector('#dropzone')) return;
 		if (document.querySelector('[name="imagen"]').value.trim()) {
 			let imagenPublicada = {
 				accepted: true,
@@ -22,6 +24,7 @@ export const dropzone = new Dropzone('#dropzone', {
 				status: 'success',
 			};
 			document.querySelector('#dropzone').classList.add('border-green-300');
+
 			this.options.addedfile.call(this, imagenPublicada);
 			this.options.thumbnail.call(
 				this,
@@ -59,7 +62,6 @@ export const dropzone = new Dropzone('#dropzone', {
 				.classList.remove('border-green-300');
 			document.querySelector('#dropzone').classList.remove('border-red-300');
 			document.querySelector('[name="imagen"]').value = null;
-			
 		});
 	},
 });

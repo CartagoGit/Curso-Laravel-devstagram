@@ -74,7 +74,7 @@
                 </div>
             @endif
         </form>
-        <div class="shadow p-5 mb-5 rounded-lg bg-gray-800 text-white w-4/5 sm:w-[calc(90%+1rem)] sm:w-full">
+        <div class="shadow p-5 mb-5 rounded-lg bg-gray-800 text-white w-4/5 sm:w-[calc(90%+1rem)] sm:w-full max-w-[700px]">
             <p class="text-xl font-bold text-center mb-4">
                 Comentarios
             </p>
