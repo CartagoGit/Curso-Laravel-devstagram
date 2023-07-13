@@ -38,6 +38,10 @@
                     <p class="text-xl font-bold text-center mb-4">
                         Agregar comentario
                     </p>
+                    @if(session('message'))
+
+						  <p class="bg-green-500 text-white mb-2 rounded-lg text-sm p-2 text-center w-full">{{ session('message') }}
+                    @endif
                     <div class="h-full flex flex-col h-full">
                         <div class="relative flex flex h-full">
                             <textarea id="comentario" type="text" name="comentario" minlength="10" maxlength="2200"

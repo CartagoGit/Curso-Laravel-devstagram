@@ -11,19 +11,21 @@ class CommentController extends Controller
 {
 
 	//
-	public function store(Request $request, User $user, Post $post)
+	public function store(Request $request, string $userPath, int $postId)
 	{
+
 
 		$this->validate($request, [
 			'comentario' => 'required|max:2200|min:10',
 		]);
+		$userCommented = auth()->user();
 		Comment::create([
-			'user_id' => auth()->id(),
-			'post_id' => $post->id,
+			'user_id' => $userCommented->id,
+			'post_id' => $postId,
 			'comment' => $request->comentario,
 		]);
 
 
-		return back();
+		return back()->with('message', 'Comentario agregado correctamente');
 	}
 }
