@@ -88,12 +88,15 @@
                     @foreach ($post->comments as $comment)
                         <div class="relative flex flex h-full">
                             <div disabled="true" type="text" name="comentario" minlength="10" maxlength="2200"
-                                class="text-left border-2 border-sky-400 p-3 w-full rounded-lg resize-none bg-white text-black">{{ $comment->comment }}</div>
+                                class="text-left border-2 border-sky-400 p-3 w-full rounded-lg resize-none bg-white text-black">
+                                {{ $comment->comment }}</div>
 
                         </div>
                         <div class="mt-2 mb-10">
                             <div class="flex justify-between">
-                                <span class="font-bold">{{ $post->user->username }}
+                                <span class="font-bold">
+                                    <a
+                                        href="{{ route('posts.index', $comment->user) }}">{{ $comment->user->username }}</a>
                                     <span class="text-sm text-gray-500">
                                         {{ $comment->created_at->diffForHumans() }}
                                     </span>
