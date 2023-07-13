@@ -40,7 +40,7 @@
                     </p>
                     <div class="h-full flex flex-col h-full">
                         <div class="relative flex flex h-full">
-                            <textarea id="comment" type="text" name="comment" minlength="10" maxlength="2200"
+                            <textarea id="comentario" type="text" name="comentario" minlength="10" maxlength="2200"
                                 placeholder="Agregar comentario..." oninput="updateCommentLength(this)"
                                 class="border p-3 w-full rounded-lg focus:outline-gray-300 resize-y  min-h-[100px] h-full max-h-[500px] @error('comment') border-red-500 @enderror"></textarea>
                             <span class="absolute text-xs right-0 -bottom-4 text-gray-700">
@@ -55,8 +55,8 @@
                                 }
                             </script>
                         </div>
-                        @error('comment')
-                            <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center w-full">{{ $message }}
+                        @error('comentario')
+                            <p class="bg-red-500 text-white mt-6 rounded-lg text-sm p-2 text-center w-full">{{ $message }}
                             </p>
                         @enderror
                     </div>
