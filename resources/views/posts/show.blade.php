@@ -123,9 +123,11 @@
                                 <span class="flex items-center gap-4 text-right">
 											@if (auth()->user()->id == $comment->user_id)
 
-											<span class="text-sm text-red-500 cursor-pointer">
-												Eliminar Comentario
-											</span>
+											<form method="POST"  class="text-sm text-red-500 cursor-pointer">
+												@csrf
+												@method('DELETE')
+												<button type="submit" href="#">Eliminar Comentario</button>
+											</form>
 											@endif
 											<span>
 

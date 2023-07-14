@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
@@ -89,10 +90,17 @@ class PostController extends Controller
 	public function destroy(string $userPath, int $postId)
 	{
 		$post = Post::find($postId);
-		$user = User::where('path', $userPath)->first();
+		// $user = User::where('path', $userPath)->first();
 
-		if ($post && $user && $post->user_id == auth()->id()) {
-			$post->delete();
+		$this->authorize('delete', $post);
+		// if ($post && $user && $post->user_id == auth()->id()) {
+		$post->delete();
+		// }
+
+		$imagen_path = public_path()  . $post->image;
+		if (File::exists($imagen_path)) {
+			unlink($imagen_path);
+			// File::delete($imagen_path);
 		}
 
 
