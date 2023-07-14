@@ -19,7 +19,7 @@
                     <span class="text-right">
                         0 Likes
                         @if (auth()->check())
-                            <button>Boton Dar Like</button>
+                            <button class="text-lg">💖</button>
                         @endif
                     </span>
                 </div>
@@ -123,7 +123,7 @@
                                 <span class="text-right">
                                     0 Likes
                                     @if (auth()->check())
-                                        <button>Boton Dar Like</button>
+                                        <button>💖</button>
                                     @endif
                                 </span>
                             </div>
