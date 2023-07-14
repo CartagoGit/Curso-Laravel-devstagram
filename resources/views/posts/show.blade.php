@@ -120,11 +120,20 @@
                                         {{ $comment->created_at->diffForHumans() }}
                                     </span>
                                 </span>
-                                <span class="text-right">
+                                <span class="flex items-center gap-4 text-right">
+											@if (auth()->user()->id == $comment->user_id)
+
+											<span class="text-sm text-red-500 cursor-pointer">
+												Eliminar Comentario
+											</span>
+											@endif
+											<span>
+
                                     0 Likes
                                     @if (auth()->check())
                                         <button>💖</button>
                                     @endif
+											</span>
                                 </span>
                             </div>
                             <p></p>
