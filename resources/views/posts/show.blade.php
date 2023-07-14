@@ -31,11 +31,11 @@
 					 {{-- {{ dd($post) }} --}}
                 {{-- @if (auth()->id() == $post->user_id && $post->user && isset($post->user->path)) --}}
                 @if (auth()->id() == $post->user_id)
-                    <div class="flex justify-between mt-5">
-                        {{-- <a href="{{ route('posts.edit', $post) }}"
-                            class="w-full p-3 font-bold text-white uppercase transition-colors rounded-lg cursor-pointer bg-sky-600 hover:bg-sky-700">
+                    <div class="flex justify-between gap-10 mt-5">
+                        <a href="#"
+                            class="p-3 font-bold text-white uppercase transition-colors rounded-lg cursor-pointer bg-amber-600 l hover:bg-amber-700">
                             Editar publicación
-                        </a> --}}
+                        </a>
                         <form action="{{ route('posts.destroy', ['user' => $post->user->path, 'post' => $post->id]) }}"
                             method="POST">
                             @csrf
