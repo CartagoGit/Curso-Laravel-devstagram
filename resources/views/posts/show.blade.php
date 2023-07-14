@@ -15,7 +15,9 @@
 
             <div>
                 <div class="flex justify-between">
-                    <span class="font-bold">{{ $post->user->username }}</span>
+                    <span class="font-bold"> <a
+                            href="{{ route('posts.index', $post->user->username) }}">{{ $post->user->username }}
+                        </a></span>
                     <span class="text-right">
                         0 Likes
                         @if (auth()->check())
@@ -28,7 +30,7 @@
                     {{ $post->description }}
 
                 </p>
-					 {{-- {{ dd($post) }} --}}
+                {{-- {{ dd($post) }} --}}
                 {{-- @if (auth()->id() == $post->user_id && $post->user && isset($post->user->path)) --}}
                 @if (auth()->id() == $post->user_id)
                     <div class="flex justify-between gap-10 mt-5">
@@ -114,28 +116,27 @@
                         <div class="mt-2 mb-10">
                             <div class="flex justify-between">
                                 <span class="font-bold">
-                                    <a
-                                        href="{{ route('posts.index', $comment->user) }}">{{ $comment->user->username }}</a>
+                                    <a href="{{ route('posts.index', $comment->user) }}">{{ $comment->user->username }}
+                                    </a>
                                     <span class="text-sm text-gray-500">
                                         {{ $comment->created_at->diffForHumans() }}
                                     </span>
                                 </span>
                                 <span class="flex items-center gap-4 text-right">
-											@if (auth()->user()->id == $comment->user_id)
-
-											<form method="POST"  class="text-sm text-red-500 cursor-pointer">
-												@csrf
-												@method('DELETE')
-												<button type="submit" href="#">Eliminar Comentario</button>
-											</form>
-											@endif
-											<span>
-
-                                    0 Likes
-                                    @if (auth()->check())
-                                        <button>💖</button>
+                                    @if (auth()->user()->id == $comment->user_id)
+                                        <form method="POST" class="text-sm text-red-500 cursor-pointer">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" href="#">Eliminar Comentario</button>
+                                        </form>
                                     @endif
-											</span>
+                                    <span>
+
+                                        0 Likes
+                                        @if (auth()->check())
+                                            <button>💖</button>
+                                        @endif
+                                    </span>
                                 </span>
                             </div>
                             <p></p>
