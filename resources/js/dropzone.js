@@ -15,7 +15,8 @@ export const dropzone = dropZoneElement && new Dropzone('#dropzone', {
 	thumbnailWidth: '500',
 	thumbnailHeight: '500',
 	init: function () {
-		if (document.querySelector('#dropzone')) return;
+		if (!document.querySelector('#dropzone')) return;
+	
 		if (document.querySelector('[name="imagen"]').value.trim()) {
 			let imagenPublicada = {
 				accepted: true,

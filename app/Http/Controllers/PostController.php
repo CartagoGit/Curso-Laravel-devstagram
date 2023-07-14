@@ -85,4 +85,17 @@ class PostController extends Controller
 		}
 		return view('posts.show', ['user' => $user, 'post' => $post]);
 	}
+
+	public function destroy(string $userPath, int $postId)
+	{
+		$post = Post::find($postId);
+		$user = User::where('path', $userPath)->first();
+
+		if ($post && $user && $post->user_id == auth()->id()) {
+			$post->delete();
+		}
+
+
+		return redirect()->route('posts.index', auth()->user()->path);
+	}
 }
