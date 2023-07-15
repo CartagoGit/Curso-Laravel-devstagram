@@ -11,29 +11,46 @@ class LikeController extends Controller
 {
 	//
 
-	public function store(User $user,  $foreign)
+	public function store()
 	{
+		$typeLike = request()->typeLike;
+		if (!$typeLike) {
+			dd('no typeLike => "post" or "comment"');
+		}
+		$foreign = $typeLike == 'post' ? Post::find(json_decode(request()->foreign)->id) : Comment::find(json_decode(request()->foreign)->id);
+		$user = auth()->user();
+		if (!$user) {
+			return back();
+		}
+
+		$user = User::find($user->id);
+
+
 		if ($foreign instanceof Post) {
-			$postHasLike = !!Post::find($foreign->id)->likes()->where(['user_id', $user->id]);
-			if($postHasLike){
+
+			$postHasLike = !!$foreign->likes()->where(['user_id', $user->id]);
+			if ($postHasLike) {
 				$this->destroy($user, $foreign);
-				return;
+				return back();
 			}
 			$foreign->likes()->create([
 				'user_id' => $user->id,
 				'post_id' => $foreign->id
 			]);
 		} else if ($foreign instanceof Comment) {
-			$commentHasLike = !!Comment::find($foreign->id)->likes()->where(['user_id', $user->id]);
-			if($commentHasLike){
+
+			$commentHasLike = !!!!$foreign->likes()->where(['user_id', $user->id]);
+			if ($commentHasLike) {
 				$this->destroy($user, $foreign);
-				return;
+				return back();
 			}
 			$foreign->likes()->create([
 				'user_id' => $user->id,
 				'comment_id' => $foreign->id
 			]);
 		}
+
+		return back();
 	}
 
 	public function destroy(User $user, $foreign)

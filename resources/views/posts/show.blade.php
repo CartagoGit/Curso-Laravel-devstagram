@@ -21,10 +21,14 @@
                     <span class="text-right">
                         0 Likes
                         @if (auth()->check())
-								<form action="" method="POST">
-									@csrf
-									<button type="submit" class="text-lg">💖</button>
-								</form>
+                            {{-- <form action="{{ route('likes.store', ['user' => auth()->user(), 'foreign' => $post]) }}" --}}
+                            <form action="{{ route('likes.store') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="foreign" value="{{ $post }}">
+                                <input type="hidden" name="typeLike" value="post">
+                                <button type="submit"
+                                    class="text-lg">{{ $post->likes()->find($post->user->id) != auth()->id() ? '💖' : '❌' }}</button>
+                            </form>
                         @endif
                     </span>
                 </div>
