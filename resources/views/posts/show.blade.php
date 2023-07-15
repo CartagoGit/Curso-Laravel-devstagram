@@ -27,7 +27,7 @@
                                 <input type="hidden" name="foreign" value="{{ $post }}">
                                 <input type="hidden" name="typeLike" value="post">
                                 <button type="submit"
-                                    class="text-lg">{{ $post->likes()->find($post->user->id) != auth()->id() ? '💖' : '❌' }}</button>
+                                    class="text-lg">{{ $post->likes()->where('user_id', auth()->id())->where('post_id', $post->id)->exists()? '❌': '💖' }}</button>
                             </form>
                         @endif
                     </span>
