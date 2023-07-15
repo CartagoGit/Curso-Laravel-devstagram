@@ -17,6 +17,7 @@ class LikeController extends Controller
 		if (!$typeLike) {
 			dd('No request with var typeLike => "post" or "comment"');
 		}
+		// $foreign = json_decode(request()->foreign);
 		$foreign = $typeLike == 'post' ? Post::find(json_decode(request()->foreign)->id) : Comment::find(json_decode(request()->foreign)->id);
 		$user = auth()->user();
 		if (!$user) {
@@ -24,32 +25,43 @@ class LikeController extends Controller
 		}
 
 		$user = User::find($user->id);
+		$foreignHasLike = $foreign->likes()->where('user_id', $user->id)->exists();
 
-
-		if ($foreign instanceof Post) {
-
-			$postHasLike = $foreign->likes()->where('user_id', $user->id)->exists();
-
-			if ($postHasLike) {
-				$this->destroy($user, $foreign);
-				return back();
-			}
-			$foreign->likes()->create([
-				'user_id' => $user->id,
-				'post_id' => $foreign->id
-			]);
-		} else if ($foreign instanceof Comment) {
-
-			$commentHasLike = $foreign->likes()->where('user_id', $user->id)->exists();
-			if ($commentHasLike) {
-				$this->destroy($user, $foreign);
-				return back();
-			}
-			$foreign->likes()->create([
-				'user_id' => $user->id,
-				'comment_id' => $foreign->id
-			]);
+		if ($foreignHasLike) {
+			$this->destroy($user, $foreign);
+			return back();
 		}
+		//* Podemos acceder a ello ya que post y comment tienen hasMany(Like::class) entonces laravel
+		//* asocia directamente el id del post o comment con el id del post_id o comment_id de la tabla likes
+		$foreign->likes()->create([
+			'user_id' => $user->id,
+			// 'post_id' => $foreign->id
+		]);
+
+		// if ($foreign instanceof Post) {
+
+		// 	$postHasLike = $foreign->likes()->where('user_id', $user->id)->exists();
+
+		// 	if ($postHasLike) {
+		// 		$this->destroy($user, $foreign);
+		// 		return back();
+		// 	}
+		// 	$foreign->likes()->create([
+		// 		'user_id' => $user->id,
+		// 		'post_id' => $foreign->id
+		// 	]);
+		// } else if ($foreign instanceof Comment) {
+
+		// 	$commentHasLike = $foreign->likes()->where('user_id', $user->id)->exists();
+		// 	if ($commentHasLike) {
+		// 		$this->destroy($user, $foreign);
+		// 		return back();
+		// 	}
+		// 	$foreign->likes()->create([
+		// 		'user_id' => $user->id,
+		// 		'comment_id' => $foreign->id
+		// 	]);
+		// }
 
 		return back();
 	}
