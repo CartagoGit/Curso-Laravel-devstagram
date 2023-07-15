@@ -22,16 +22,30 @@
                         {{ $post->likes()->count() }} Likes
                         @if (auth()->check())
                             {{-- <form action="{{ route('likes.store', ['user' => auth()->user(), 'foreign' => $post]) }}" --}}
-                            <form action="{{ route('likes.store') }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="foreign" value="{{ $post }}">
-                                <input type="hidden" name="kindLike" value="post">
-                                <button type="submit" class="text-lg">
-                                    {{-- {{ $post->likes()->where('user_id', auth()->id())->where('post_id', $post->id)->exists()? '❌': '💖' }} --}}
-                                    {{ $post->checkUserLiked(auth()->user()) ? '❌' : '💖' }}
-                                </button>
-                            </form>
+                            @if ($post->checkUserLiked(auth()->user()))
+                                <form action="{{ route('likes.destroy') }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="hidden" name="foreign" value="{{ $post }}">
+                                    <input type="hidden" name="kindLike" value="post">
+                                    <button type="submit" class="text-lg">
+                                        ❌
+                                    </button>
+                                </form>
+                            @else
+                                <form action="{{ route('likes.store') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="foreign" value="{{ $post }}">
+                                    <input type="hidden" name="kindLike" value="post">
+                                    <button type="submit" class="text-lg">
+                                        {{-- {{ $post->likes()->where('user_id', auth()->id())->where('post_id', $post->id)->exists()? '❌': '💖' }} --}}
+                                        {{-- {{ $post->checkUserLiked(auth()->user()) ? '❌' : '💖' }} --}}
+                                        💖
+                                    </button>
+                                </form>
+                            @endif
                         @endif
+
                     </span>
                 </div>
                 <p class="text-sm text-gray-500">{{ $post->created_at->diffForHumans() }}</p>
