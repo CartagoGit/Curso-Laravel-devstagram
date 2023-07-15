@@ -23,6 +23,7 @@
                             @if ($user->id === auth()->user()->id)
                                 <a
                                     class="cursor-pointer self-center text-gray-500 transition-colors hover:text-gray-600"
+                                    href="{{ route('profile.index', $user) }}"
                                     title="Editar perfil del usuario"
                                 >
                                     <svg
