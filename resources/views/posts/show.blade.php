@@ -130,7 +130,7 @@
                                     </span>
                                 </span>
                                 <span class="flex items-center gap-4 text-right">
-                                    @if (auth()->user()->id == $comment->user_id)
+                                    @if (auth()->check() && auth()->user()->id == $comment->user_id)
                                         <form method="POST" class="text-sm text-red-500 cursor-pointer">
                                             @csrf
                                             @method('DELETE')

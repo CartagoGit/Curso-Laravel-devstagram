@@ -15,7 +15,7 @@ class LikeController extends Controller
 	{
 		$typeLike = request()->typeLike;
 		if (!$typeLike) {
-			dd('no typeLike => "post" or "comment"');
+			dd('No request with var typeLike => "post" or "comment"');
 		}
 		$foreign = $typeLike == 'post' ? Post::find(json_decode(request()->foreign)->id) : Comment::find(json_decode(request()->foreign)->id);
 		$user = auth()->user();
