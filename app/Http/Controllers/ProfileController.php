@@ -13,11 +13,10 @@ class ProfileController extends Controller
 
 		$this->middleware('auth');
 		$this->middleware('checkprofile');
-		
 	}
 	public function index(User $user)
 	{
-		dd('editar');
+
 		return view('profile.index', [
 			'user' => $user
 		]);
