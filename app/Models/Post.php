@@ -18,7 +18,7 @@ class Post extends Model
 
 	public function user()
 	{
-		return $this->belongsTo(User::class)->select(['name', 'username','path']);
+		return $this->belongsTo(User::class)->select(['name', 'username', 'path']);
 		// return $this->belongsTo(User::class)->select(['name', 'username']);
 	}
 
@@ -30,5 +30,11 @@ class Post extends Model
 	public function likes()
 	{
 		return $this->hasMany(Like::class);
+	}
+
+	public function checkUserLiked(User $user)
+	{
+		// return $this->likes()->contains('user_id', $user->id);
+		return $this->likes()->where('user_id', $user->id)->exists();
 	}
 }

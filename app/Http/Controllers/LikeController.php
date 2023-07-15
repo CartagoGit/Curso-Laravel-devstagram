@@ -13,22 +13,26 @@ class LikeController extends Controller
 
 	public function store()
 	{
-		$typeLike = request()->typeLike;
-		if (!$typeLike) {
-			dd('No request with var typeLike => "post" or "comment"');
-		}
-		// $foreign = json_decode(request()->foreign);
-		$foreign = $typeLike == 'post' ? Post::find(json_decode(request()->foreign)->id) : Comment::find(json_decode(request()->foreign)->id);
-		$user = auth()->user();
-		if (!$user) {
-			return back();
-		}
+		// $kindLike = request()->kindLike;
+		// if (!$kindLike) {
+		// 	dd('No request with var kindLike => "post" or "comment"');
+		// }
+		// // $foreign = json_decode(request()->foreign);
+		// $foreign = $kindLike == 'post' ? Post::find(json_decode(request()->foreign)->id) : Comment::find(json_decode(request()->foreign)->id);
+		// $user = auth()->user();
+		// if (!$user) {
+		// 	return back();
+		// }
 
-		$user = User::find($user->id);
+		// $user = User::find($user->id);
+		$data = $this->_getKindForeignModel(request());
+		$foreign = $data['foreign'];
+		$user = $data['user'];
+
 		$foreignHasLike = $foreign->likes()->where('user_id', $user->id)->exists();
 
 		if ($foreignHasLike) {
-			$this->destroy($user, $foreign);
+			$this->destroy(request());
 			return back();
 		}
 		//* Podemos acceder a ello ya que post y comment tienen hasMany(Like::class) entonces laravel
@@ -66,12 +70,41 @@ class LikeController extends Controller
 		return back();
 	}
 
-	public function destroy(User $user, $foreign)
+	// public function destroy(User $user, $foreign)
+	// {
+
+	// if ($foreign instanceof Post) {
+	// 	$foreign->likes()->where([['post_id', $foreign->id], ['user_id', $user->id]])->delete();
+	// } else if ($foreign instanceof Comment) {
+	// 	$foreign->likes()->where([['comment_id', $foreign->id], ['user_id', $user->id]])->delete();
+	// }
+	// }
+
+	public function destroy(Request $request)
 	{
-		if ($foreign instanceof Post) {
-			$foreign->likes()->where([['post_id', $foreign->id], ['user_id', $user->id]])->delete();
-		} else if ($foreign instanceof Comment) {
-			$foreign->likes()->where([['comment_id', $foreign->id], ['user_id', $user->id]])->delete();
+		$data = $this->_getKindForeignModel($request);
+		$foreign = $data['foreign'];
+		$user = $data['user'];
+
+		$foreign->likes()->where('user_id', $user->id)->delete();
+		return back();
+	}
+
+	/**
+	 * ? Recupera el el comentario o post como tipo foraneo y el usuario que le dio like
+	 */
+	private function _getKindForeignModel(Request $request)
+	{
+		$kindLike = $request->kindLike;
+		if (!$kindLike) {
+			dd('No request with var kindLike => "post" or "comment"');
 		}
+		$foreign = $kindLike == 'post' ? Post::find(json_decode($request->foreign)->id) : Comment::find(json_decode($request->foreign)->id);
+		$user = auth()->user();
+		if (!$user) {
+			return back();
+		}
+		$user = User::find($user->id);
+		return ['user' => $user, 'foreign' => $foreign];
 	}
 }

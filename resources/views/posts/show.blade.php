@@ -19,15 +19,17 @@
                             href="{{ route('posts.index', $post->user->username) }}">{{ $post->user->username }}
                         </a></span>
                     <span class="flex items-center gap-1 text-right">
-							{{ $post->likes()->count() }} Likes
+                        {{ $post->likes()->count() }} Likes
                         @if (auth()->check())
                             {{-- <form action="{{ route('likes.store', ['user' => auth()->user(), 'foreign' => $post]) }}" --}}
                             <form action="{{ route('likes.store') }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="foreign" value="{{ $post }}">
-                                <input type="hidden" name="typeLike" value="post">
-                                <button type="submit"
-                                    class="text-lg">{{ $post->likes()->where('user_id', auth()->id())->where('post_id', $post->id)->exists()? '❌': '💖' }}</button>
+                                <input type="hidden" name="kindLike" value="post">
+                                <button type="submit" class="text-lg">
+                                    {{-- {{ $post->likes()->where('user_id', auth()->id())->where('post_id', $post->id)->exists()? '❌': '💖' }} --}}
+                                    {{ $post->checkUserLiked(auth()->user()) ? '❌' : '💖' }}
+                                </button>
                             </form>
                         @endif
                     </span>
@@ -140,16 +142,16 @@
                                     <span class="flex items-center gap-1">
 
                                         {{ $comment->likes()->count() }} Likes
-													 @if (auth()->check())
-													 {{-- <form action="{{ route('likes.store', ['user' => auth()->user(), 'foreign' => $post]) }}" --}}
-													 <form action="{{ route('likes.store') }}" method="POST">
-														  @csrf
-														  <input type="hidden" name="foreign" value="{{ $comment }}">
-														  <input type="hidden" name="typeLike" value="comment">
-														  <button type="submit"
-																class="text-lg">{{ $comment->likes()->where('user_id', auth()->id())->where('comment_id', $comment->id)->exists()? '❌': '💖' }}</button>
-													 </form>
-												@endif
+                                        @if (auth()->check())
+                                            {{-- <form action="{{ route('likes.store', ['user' => auth()->user(), 'foreign' => $post]) }}" --}}
+                                            <form action="{{ route('likes.store') }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="foreign" value="{{ $comment }}">
+                                                <input type="hidden" name="kindLike" value="comment">
+                                                <button type="submit"
+                                                    class="text-lg">{{ $comment->likes()->where('user_id', auth()->id())->where('comment_id', $comment->id)->exists()? '❌': '💖' }}</button>
+                                            </form>
+                                        @endif
                                     </span>
                                 </span>
                             </div>
