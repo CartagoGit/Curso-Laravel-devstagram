@@ -39,6 +39,7 @@ Route::delete('/{user:path}/posts/{post:id}', [PostController::class, 'destroy']
 Route::post('/{user:path}/posts/{post:id}', [CommentController::class, 'store'])->name('comments.store');
 
 Route::post('/images', [ImageController::class, 'store'])->name('images.store');
+Route::post('/likes', [LikeController::class, 'store'])->name('likes.store');
 
 //* Devuelve cualquier vista que no coincida a login o a dashboard dependiendo si está autenticado o no
 // Route::get('/{any}', [PageNotFoundController::class, 'redirectAuth'])->where('any', '.*')->name('root');
