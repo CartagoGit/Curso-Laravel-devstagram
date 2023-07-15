@@ -18,8 +18,8 @@
                     <span class="font-bold"> <a
                             href="{{ route('posts.index', $post->user->username) }}">{{ $post->user->username }}
                         </a></span>
-                    <span class="text-right">
-                        0 Likes
+                    <span class="flex items-center gap-1 text-right">
+							{{ $post->likes()->count() }} Likes
                         @if (auth()->check())
                             {{-- <form action="{{ route('likes.store', ['user' => auth()->user(), 'foreign' => $post]) }}" --}}
                             <form action="{{ route('likes.store') }}" method="POST">
@@ -137,9 +137,9 @@
                                             <button type="submit" href="#">Eliminar Comentario</button>
                                         </form>
                                     @endif
-                                    <span>
+                                    <span class="flex items-center gap-1">
 
-                                        0 Likes
+                                        {{ $comment->likes()->count() }} Likes
 													 @if (auth()->check())
 													 {{-- <form action="{{ route('likes.store', ['user' => auth()->user(), 'foreign' => $post]) }}" --}}
 													 <form action="{{ route('likes.store') }}" method="POST">
