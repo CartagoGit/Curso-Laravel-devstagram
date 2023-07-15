@@ -53,6 +53,10 @@ return new class extends Migration
 			// Restricción personalizada para verificar que solo una de las claves foráneas tenga valor
 			// $table->unique(['post_id', 'comment_id']);
 			// $table->checkConstraint('post_id is not null xor comment_id is not null');
+			
+			// Restricción de clave única para el par [user_id, post_id] o [user_id, comment_id]
+			$table->unique(['user_id', 'post_id']);
+			$table->unique(['user_id', 'comment_id']);
 
 			DB::statement('ALTER TABLE likes ADD CONSTRAINT check_either_post_or_comment CHECK (post_id IS NOT NULL XOR comment_id IS NOT NULL)');
 		});
