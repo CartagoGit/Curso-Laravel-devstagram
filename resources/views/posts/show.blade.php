@@ -140,9 +140,16 @@
                                     <span>
 
                                         0 Likes
-                                        @if (auth()->check())
-                                            <button>💖</button>
-                                        @endif
+													 @if (auth()->check())
+													 {{-- <form action="{{ route('likes.store', ['user' => auth()->user(), 'foreign' => $post]) }}" --}}
+													 <form action="{{ route('likes.store') }}" method="POST">
+														  @csrf
+														  <input type="hidden" name="foreign" value="{{ $comment }}">
+														  <input type="hidden" name="typeLike" value="comment">
+														  <button type="submit"
+																class="text-lg">{{ $comment->likes()->where('user_id', auth()->id())->where('comment_id', $comment->id)->exists()? '❌': '💖' }}</button>
+													 </form>
+												@endif
                                     </span>
                                 </span>
                             </div>
