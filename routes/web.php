@@ -44,6 +44,9 @@ Route::post('/images', [ImageController::class, 'store'])->name('images.store');
 Route::post('/likes', [LikeController::class, 'store'])->name('likes.store');
 Route::delete('/likes', [LikeController::class, 'destroy'])->name('likes.destroy');
 
+Route::get('{user:path}/edit', [ProfileController::class, 'index'])->name('profile.index');
+Route::post('{user:path}/edit', [ProfileController::class, 'store'])->name('profile.store');
+
 //* Devuelve cualquier vista que no coincida a login o a dashboard dependiendo si está autenticado o no
 // Route::get('/{any}', [PageNotFoundController::class, 'redirectAuth'])->where('any', '.*')->name('root');
 Route::fallback([PageNotFoundController::class, 'redirectAuth'])->name('root');
