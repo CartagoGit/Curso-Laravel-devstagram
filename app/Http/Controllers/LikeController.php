@@ -28,7 +28,8 @@ class LikeController extends Controller
 
 		if ($foreign instanceof Post) {
 
-			$postHasLike = !!$foreign->likes()->where(['user_id', $user->id]);
+			$postHasLike = $foreign->likes()->where('user_id', $user->id)->exists();
+
 			if ($postHasLike) {
 				$this->destroy($user, $foreign);
 				return back();
@@ -39,7 +40,7 @@ class LikeController extends Controller
 			]);
 		} else if ($foreign instanceof Comment) {
 
-			$commentHasLike = !!!!$foreign->likes()->where(['user_id', $user->id]);
+			$commentHasLike = $foreign->likes()->where('user_id', $user->id)->exists();
 			if ($commentHasLike) {
 				$this->destroy($user, $foreign);
 				return back();
