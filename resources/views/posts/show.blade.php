@@ -21,7 +21,10 @@
                     <span class="text-right">
                         0 Likes
                         @if (auth()->check())
-                            <button class="text-lg">💖</button>
+								<form action="" method="POST">
+									@csrf
+									<button type="submit" class="text-lg">💖</button>
+								</form>
                         @endif
                     </span>
                 </div>
