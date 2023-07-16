@@ -1,22 +1,21 @@
 @extends('layouts.app')
 @push('styles')
-	 <link
-		  type="text/css"
-		  href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css"
-		  rel="stylesheet"
-	 />
-	 @vite('resources/css/dropzone.css')
+    <link
+        type="text/css"
+        href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css"
+        rel="stylesheet"
+    />
+    @vite('resources/css/dropzone.css')
 @endpush
 @section('titulo')
     Edición del perfil de {{ $user->username }}
 @endsection
 
-
 @section('contenido')
     <div class="flex flex-col items-center justify-center lg:flex-row">
         <div class="w-4/5 bg-white p-6 shadow">
             <form
-                action="{{ route('register') }}"
+                action="{{ route('profile.store', ['user' => $user]) }}"
                 method="POST"
                 novalidate
                 autocomplete="off"
@@ -24,7 +23,7 @@
                 @csrf
 
                 <div class="flex flex-col lg:flex-row">
-                    <section class="section__left w-full lg:w-1/2">
+                    <section class="section__left flex w-full lg:w-1/2 flex-col">
                         <label
                             class="mb-2 block font-bold uppercase text-gray-500"
                             for="nombre"
@@ -35,14 +34,10 @@
                             name='imagen'
                             type="file"
                         > --}}
-                        <div class="flex min-h-[200px] self-stretch px-10">
-                            <form
-                                class="dropzone rounder flex w-full cursor-pointer flex-col items-center justify-center rounded-xl border-[4px] border-dashed border-gray-200 bg-gray-50 shadow-xl transition-opacity hover:opacity-70"
+                        <div class="flex min-h-[200px] self-stretch px-10 pb-5 h-full">
+                            <div
+                                class="dropzone rounder flex w-full cursor-pointer flex-col items-center justify-center rounded-xl border-[4px] border-dashed border-gray-200 bg-gray-50 shadow-md transition-opacity hover:opacity-70"
                                 id="dropzone"
-                                novalidate
-                                action="{{ route('images.store') }}"
-                                method="POST"
-                                enctype="multipart"
                             >
                                 @csrf
                                 <div
@@ -57,7 +52,7 @@
                                         tu imagen
                                     </span>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </section>
                     <section class="section__right w-full lg:w-1/2">
