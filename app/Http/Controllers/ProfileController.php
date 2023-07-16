@@ -33,7 +33,7 @@ class ProfileController extends Controller
 				'required',
 				'min:3',
 				'max:20',
-				'unique:users,username',
+				// 'unique:users,username',
 				function ($attribute, $value, $fail) use ($request) {
 					$isCurrentUser = $request->user()->username === $value;
 					if (!$isCurrentUser && User::where('username', $value)->exists()) {
@@ -42,8 +42,19 @@ class ProfileController extends Controller
 				},
 			],
 
-			'email' => 'required|min:5|max:60|email|unique:users',
-			'password' => 'confirmed|min:6|max:255',
+			'email' => [
+				'required',
+				'min:5',
+				'max:60',
+				'email',
+				function ($attribute, $value, $fail) use ($request) {
+					$isCurrentUser = $request->user()->email === $value;
+					if (!$isCurrentUser && User::where('email', $value)->exists()) {
+						$fail('El valor del campo email ya está en uso.');
+					}
+				},
+			],
+			'password' => 'sometimes|nullable|confirmed|min:6|max:255',
 		]);
 		dd('guardar');
 	}
