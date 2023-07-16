@@ -1,84 +1,140 @@
 @extends('layouts.app')
 
 @section('titulo')
-Registrarse en DevStagram
+    Registrarse en DevStagram
 @endsection
 
 @section('contenido')
-<div class="md:flex md:justify-center md:gap-10 md:items-center">
-	<div class="md:w-6/12 p-5">
-		<img src="{{ asset('img/auth/registrar.jpg') }}" alt="Imagen de registro de usuario"
-			class="rounded-lg">
-	</div>
+    <div class="md:flex md:items-center md:justify-center md:gap-10">
+        <div class="p-5 md:w-6/12">
+            <img
+                class="rounded-lg"
+                src="{{ asset('img/auth/registrar.jpg') }}"
+                alt="Imagen de registro de usuario"
+            >
+        </div>
 
-	<div class="md:w-4/12 p-6 bg-white rounded-lg shadow-xl">
-		<form action="{{ route('register') }}" method="POST" novalidate>
-			@csrf
-			<div class="mb-5">
-				<label for="nombre" class="mb-2 block uppercase text-gray-500 font-bold">
-					Nombre
-				</label>
-				<input id="nombre" type="text" name="nombre" placeholder="Nombre" class="border p-3 w-full rounded-lg  focus:outline-gray-300
-@error('nombre') border-red-500  @enderror"
-                        value=" {{ old('nombre') }}" />
-				@error('nombre')
-					<p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center w-full">{{ $message }}</p>
-				@enderror
+        <div class="rounded-lg bg-white p-6 shadow-xl md:w-4/12">
+            <form
+                action="{{ route('register') }}"
+                method="POST"
+                novalidate
+            >
+                @csrf
+                <div class="mb-5">
+                    <label
+                        class="mb-2 block font-bold uppercase text-gray-500"
+                        for="nombre"
+                    >
+                        Nombre
+                    </label>
+                    <input
+                        class="@error('nombre') border-red-500  @enderror w-full rounded-lg border p-3 focus:outline-gray-300"
+                        id="nombre"
+                        name="nombre"
+                        type="text"
+                        value=" {{ old('nombre') }}"
+                        placeholder="Nombre"
+                    />
+                    @error('nombre')
+                        <p
+                            class="my-2 w-full rounded-lg bg-red-500 p-2 text-center text-sm text-white">
+                            {{ $message }}</p>
+                    @enderror
 
-			</div>
+                </div>
 
-			<div class="mb-5">
-				<label for="nick" class="mb-2 block uppercase text-gray-500 font-bold">
-					Nick del usuario
-				</label>
-				<input id="nick" type="text" name="nick" placeholder="Nick del usuario"
-					class="border p-3 w-full rounded-lg  focus:outline-gray-300 @error('nick') border-red-500 @enderror"
-					value="{{ old('nick') }}" />
-				@error('nick')
-					<p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center w-full">{{ $message }}</p>
-				@enderror
-			</div>
+                <div class="mb-5">
+                    <label
+                        class="mb-2 block font-bold uppercase text-gray-500"
+                        for="nick"
+                    >
+                        Nick del usuario
+                    </label>
+                    <input
+                        class="@error('nick') border-red-500 @enderror w-full rounded-lg border p-3 focus:outline-gray-300"
+                        id="nick"
+                        name="nick"
+                        type="text"
+                        value="{{ old('nick') }}"
+                        placeholder="Nick del usuario"
+                    />
+                    @error('nick')
+                        <p
+                            class="my-2 w-full rounded-lg bg-red-500 p-2 text-center text-sm text-white">
+                            {{ $message }}</p>
+                    @enderror
+                </div>
 
-			<div class="mb-5">
-				<label for="email" class="mb-2 block uppercase text-gray-500 font-bold">
-					Email
-				</label>
-				<input id="email" type="text" name="email" placeholder="Email"
-					class="border p-3 w-full rounded-lg focus:outline-gray-300 @error('email') border-red-500 @enderror"
-					value="{{ old('email') }}" />
-				@error('email')
-					<p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center w-full">{{ $message }}</p>
-				@enderror
-			</div>
+                <div class="mb-5">
+                    <label
+                        class="mb-2 block font-bold uppercase text-gray-500"
+                        for="email"
+                    >
+                        Email
+                    </label>
+                    <input
+                        class="@error('email') border-red-500 @enderror w-full rounded-lg border p-3 focus:outline-gray-300"
+                        id="email"
+                        name="email"
+                        type="text"
+                        value="{{ old('email') }}"
+                        placeholder="Email"
+                    />
+                    @error('email')
+                        <p
+                            class="my-2 w-full rounded-lg bg-red-500 p-2 text-center text-sm text-white">
+                            {{ $message }}</p>
+                    @enderror
+                </div>
 
-			<div class="mb-5">
-				<label for="password" class="mb-2 block uppercase text-gray-500 font-bold">
-					Contraseña
-				</label>
-				<input id="password" type="password" name="password" placeholder="Contraseña"
-					class="border p-3 w-full rounded-lg focus:outline-gray-300  @error('password') border-red-500 @enderror"
-					value="{{ old('password') }}" />
-				@error('password')
-					<p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center w-full">{{ $message }}</p>
-				@enderror
-			</div>
+                <div class="mb-5">
+                    <label
+                        class="mb-2 block font-bold uppercase text-gray-500"
+                        for="password"
+                    >
+                        Contraseña
+                    </label>
+                    <input
+                        class="@error('password') border-red-500 @enderror w-full rounded-lg border p-3 focus:outline-gray-300"
+                        id="password"
+                        name="password"
+                        type="password"
+                        value="{{ old('password') }}"
+                        placeholder="Contraseña"
+                    />
+                    @error('password')
+                        <p
+                            class="my-2 w-full rounded-lg bg-red-500 p-2 text-center text-sm text-white">
+                            {{ $message }}</p>
+                    @enderror
+                </div>
 
-			<div class="mb-5">
-				<label for="password_confirmation" class="mb-2 block uppercase text-gray-500 font-bold">
-					Verificar Contraseña
-				</label>
-				<input id="password_confirmation" type="password" name="password_confirmation"
-					placeholder="Contraseña de verificación"
-					class="border  focus:outline-gray-300 p-3 w-full rounded-lg @error('password') border-red-500 @enderror"
-					value="{{ old('password_confirmation') }}" />
+                <div class="mb-5">
+                    <label
+                        class="mb-2 block font-bold uppercase text-gray-500"
+                        for="password_confirmation"
+                    >
+                        Verificar Contraseña
+                    </label>
+                    <input
+                        class="@error('password') border-red-500 @enderror w-full rounded-lg border p-3 focus:outline-gray-300"
+                        id="password_confirmation"
+                        name="password_confirmation"
+                        type="password"
+                        value="{{ old('password_confirmation') }}"
+                        placeholder="Contraseña de verificación"
+                    />
 
-			</div>
+                </div>
 
-			<button type="submit"
-				class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase w-full font-bold p-3 text-white rounded-lg">
-				Registrarse
-			</button>
-		</form>
-	</div>
-</div>
+                <button
+                    class="w-full cursor-pointer rounded-lg bg-sky-600 p-3 font-bold uppercase text-white transition-colors hover:bg-sky-700"
+                    type="submit"
+                >
+                    Registrarse
+                </button>
+            </form>
+        </div>
+    </div>
 @endsection

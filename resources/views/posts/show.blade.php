@@ -17,16 +17,18 @@
 
             <div>
                 <div class="flex justify-between">
-                    <span class="font-bold"> <a
-                            href="{{ route('posts.index', $post->user->username) }}"
-                        >{{ $post->user->username }}
-                        </a></span>
+                    <span class="font-bold">
+                        <a href="{{ route('posts.index', $post->user->username) }}">
+                            {{ $post->user->username }}
+                        </a>
+                    </span>
                     <span class="flex items-center gap-1 text-right">
                         {{ $post->likes()->count() }} Likes
                         @if (auth()->check())
                             {{-- <form action="{{ route('likes.store', ['user' => auth()->user(), 'foreign' => $post]) }}" --}}
                             @if ($post->checkUserLiked(auth()->user()))
                                 <form
+                                    novalidate
                                     action="{{ route('likes.destroy') }}"
                                     method="POST"
                                 >
@@ -51,6 +53,7 @@
                                 </form>
                             @else
                                 <form
+                                    novalidate
                                     action="{{ route('likes.store') }}"
                                     method="POST"
                                 >
@@ -97,6 +100,7 @@
                             Editar publicación
                         </a>
                         <form
+                            novalidate
                             action="{{ route('posts.destroy', [
                                 'user' => $post->user->path,
                                 'post' => $post->id,
@@ -118,6 +122,7 @@
         </div>
         <form
             class="flex w-4/5 flex-col sm:w-[45%]"
+            novalidate
             action="{{ route('comments.store', [
                 'user' => $user,
                 'post' => $post,
@@ -220,6 +225,7 @@
                                     @if (auth()->check() && auth()->user()->id == $comment->user_id)
                                         <form
                                             class="cursor-pointer text-sm text-red-500"
+                                            novalidate
                                             method="POST"
                                         >
                                             @csrf
@@ -236,6 +242,7 @@
                                         @if (auth()->check())
                                             {{-- <form action="{{ route('likes.store', ['user' => auth()->user(), 'foreign' => $post]) }}" --}}
                                             <form
+                                                novalidate
                                                 action="{{ route('likes.store') }}"
                                                 method="POST"
                                             >

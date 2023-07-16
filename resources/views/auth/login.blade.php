@@ -5,52 +5,93 @@
 @endsection
 
 @section('contenido')
-    <div class="md:flex md:justify-center md:gap-10 md:items-center">
-        <div class="md:w-6/12 p-5">
-            <img src="{{ asset('img/auth/login.jpg') }}" alt="Imagen de registro de usuario" class="rounded-lg">
+    <div class="md:flex md:items-center md:justify-center md:gap-10">
+        <div
+            class="p-5 md:w-6/12"
+            novalidate
+        >
+            <img
+                class="rounded-lg"
+                src="{{ asset('img/auth/login.jpg') }}"
+                alt="Imagen de registro de usuario"
+            >
         </div>
 
-        <div class="md:w-4/12 p-6 bg-white rounded-lg shadow-xl">
-            <form action="{{ route('login') }}" method="POST" novalidate>
+        <div class="rounded-lg bg-white p-6 shadow-xl md:w-4/12">
+            <form
+                action="{{ route('login') }}"
+                method="POST"
+                novalidate
+            >
                 @csrf
 
                 <div class="mb-5">
-                    <label for="credencial" class="mb-2 block uppercase text-gray-500 font-bold">
+                    <label
+                        class="mb-2 block font-bold uppercase text-gray-500"
+                        for="credencial"
+                    >
                         Nick o email del usuario
                     </label>
-                    <input id="credencial" type="text" name="credencial" placeholder="Nick o email del usuario"
-                        class="border p-3 w-full rounded-lg focus:outline-gray-300 @error('credencial') border-red-500  @enderror"
-                        value="{{ old('credencial') }}" />
+                    <input
+                        class="@error('credencial') border-red-500  @enderror w-full rounded-lg border p-3 focus:outline-gray-300"
+                        id="credencial"
+                        name="credencial"
+                        type="text"
+                        value="{{ old('credencial') }}"
+                        placeholder="Nick o email del usuario"
+                    />
                     @error('credencial')
-                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center w-full">{{ $message }}</p>
+                        <p
+                            class="my-2 w-full rounded-lg bg-red-500 p-2 text-center text-sm text-white">
+                            {{ $message }}</p>
                     @enderror
                 </div>
 
-
                 <div class="mb-5">
-                    <label for="password" class="mb-2 block uppercase text-gray-500 font-bold">
+                    <label
+                        class="mb-2 block font-bold uppercase text-gray-500"
+                        for="password"
+                    >
                         Contraseña
                     </label>
-                    <input id="password" type="password" name="password" placeholder="Contraseña"
-                        class="border p-3 w-full rounded-lg focus:outline-gray-300 @error('password') border-red-500   @enderror"
-                        value="{{ old('password') }}" />
+                    <input
+                        class="@error('password') border-red-500   @enderror w-full rounded-lg border p-3 focus:outline-gray-300"
+                        id="password"
+                        name="password"
+                        type="password"
+                        value="{{ old('password') }}"
+                        placeholder="Contraseña"
+                    />
                     @error('password')
-                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center w-full">{{ $message }}</p>
+                        <p
+                            class="my-2 w-full rounded-lg bg-red-500 p-2 text-center text-sm text-white">
+                            {{ $message }}</p>
                     @enderror
                 </div>
 
                 <div class="mb-5">
-                    <input type="checkbox" name="remember" id="remember" />
-                    <label class="text-gray-500 text-sm" for="remember">Recordar</label>
+                    <input
+                        id="remember"
+                        name="remember"
+                        type="checkbox"
+                    />
+                    <label
+                        class="text-sm text-gray-500"
+                        for="remember"
+                    >
+                        Recordar
+                    </label>
                 </div>
 
-
-
-                <button type="submit"
-                    class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase w-full font-bold p-3 text-white rounded-lg">Iniciar
-                    sesión</button>
+                <button
+                    class="w-full cursor-pointer rounded-lg bg-sky-600 p-3 font-bold uppercase text-white transition-colors hover:bg-sky-700"
+                    type="submit"
+                >
+                    Iniciar sesión
+                </button>
                 @if (@session('loginFailed'))
-                    <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center w-full">
+                    <p
+                        class="my-2 w-full rounded-lg bg-red-500 p-2 text-center text-sm text-white">
                         {{ @session('loginFailed') }}</p>
                 @endif
             </form>
