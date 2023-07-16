@@ -43,7 +43,7 @@ class PostController extends Controller
 			'titulo' => 'required|max:255',
 			'descripcion' => 'required|max:2200',
 			// 'imagen' => 'required|image'
-			'imagen' => 'required'
+			'imagen' => 'required|max:255'
 		]);
 
 		// Post::create([

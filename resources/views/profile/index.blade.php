@@ -179,8 +179,9 @@
                             <input
                                 name="imagen"
                                 type="hidden"
-                                value="{{ auth()->user()->image }}"
+                                value="{{ old('imagen') ?: $user->imagen }}"
                             />
+
                             @error('imagen')
                                 <p
                                     class="my-2 w-full rounded-lg bg-red-500 p-2 text-center text-sm text-white">

@@ -21,6 +21,7 @@ export const dropzone =
 			if (!document.querySelector('#dropzone')) return;
 
 			if (document.querySelector('[name="imagen"]')?.value.trim()) {
+				
 				let imagenPublicada = {
 					accepted: true,
 					name: document.querySelector('[name="imagen"]').value,

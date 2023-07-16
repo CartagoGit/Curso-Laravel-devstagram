@@ -26,6 +26,8 @@ class ProfileController extends Controller
 	{
 		$request = request();
 		$request->request->add(['path' => \Illuminate\Support\Str::slug($request->nick)]);
+
+
 		$this->validate($request, [
 			'nombre' => 'required|min:3|max:30',
 			// 'nick' => 'required|min:3|max:20|unique:url,username',
@@ -55,7 +57,10 @@ class ProfileController extends Controller
 				},
 			],
 			'password' => 'sometimes|nullable|confirmed|min:6|max:255',
+			'imagen' => 'sometimes|nullable|string|max:255'
 		]);
-		dd('guardar');
+
+		return back();
+		// dd('guardar');
 	}
 }
