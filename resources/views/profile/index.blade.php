@@ -15,8 +15,6 @@
     <div class="flex flex-col items-center justify-center lg:flex-row">
         <div class="w-4/5 bg-white p-6 shadow">
 
-            @csrf
-
             <div class="flex flex-col lg:flex-row">
                 <section class="section__left flex w-full flex-col lg:w-1/2">
                     <label
@@ -59,11 +57,14 @@
                 <section class="section__right w-full lg:w-1/2">
                     <form
                         id="form-edit-profile"
-                        action="{{ route('profile.store', ['user' => $user]) }}"
+                        action="{{ route('profile.store', ['user' => auth()->user()]) }}"
                         method="POST"
                         novalidate
                         autocomplete="off"
                     >
+
+                        @csrf
+
                         <div class="mb-5">
                             <label
                                 class="mb-2 block font-bold uppercase text-gray-500"
@@ -178,12 +179,13 @@
                             <input
                                 name="imagen"
                                 type="hidden"
-                                value="{{ auth()->user()->image}}"
+                                value="{{ auth()->user()->image }}"
                             />
                             @error('imagen')
                                 <p
                                     class="my-2 w-full rounded-lg bg-red-500 p-2 text-center text-sm text-white">
-                                    {{ $message }}</p>
+                                    {{ $message }}
+                                </p>
                             @enderror
                         </div>
                     </form>

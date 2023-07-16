@@ -22,8 +22,9 @@ class ProfileController extends Controller
 		]);
 	}
 
-	public function store()
+	public function store(User $user)
 	{
+
 		dd('guardar');
 	}
 }

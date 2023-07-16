@@ -15,6 +15,7 @@ class CheckUserProfile
 	 */
 	public function handle(Request $request, Closure $next): Response
 	{
+		//  dd($request->route('user'));
 		$userId = $request->route('user')->id;
 		$loggedInUserId = auth()->id();
 		if ($userId != $loggedInUserId) {
