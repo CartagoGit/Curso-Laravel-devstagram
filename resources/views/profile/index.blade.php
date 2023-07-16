@@ -14,48 +14,56 @@
 @section('contenido')
     <div class="flex flex-col items-center justify-center lg:flex-row">
         <div class="w-4/5 bg-white p-6 shadow">
-            <form
-                action="{{ route('profile.store', ['user' => $user]) }}"
-                method="POST"
-                novalidate
-                autocomplete="off"
-            >
-                @csrf
 
-                <div class="flex flex-col lg:flex-row">
-                    <section class="section__left flex w-full lg:w-1/2 flex-col">
-                        <label
-                            class="mb-2 block font-bold uppercase text-gray-500"
-                            for="nombre"
-                        >
-                            Imagen de perfil
-                        </label>
-                        {{-- <input
+            @csrf
+
+            <div class="flex flex-col lg:flex-row">
+                <section class="section__left flex w-full flex-col lg:w-1/2">
+                    <label
+                        class="mb-2 block font-bold uppercase text-gray-500"
+                        for="nombre"
+                    >
+                        Imagen de perfil
+                    </label>
+                    {{-- <input
                             name='imagen'
                             type="file"
                         > --}}
-                        <div class="flex min-h-[200px] self-stretch px-10 pb-5 h-full">
+                    <div
+                        class="flex h-full max-h-full min-h-[200px] self-stretch px-10 pb-5">
+                        <form
+                            class="dropzone rounder flex max-h-[458px] w-full cursor-pointer flex-col items-center justify-center rounded-xl border-[4px] border-dashed border-gray-200 bg-gray-50 shadow-xl transition-opacity hover:opacity-70"
+                            id="dropzone"
+                            novalidate
+                            action="{{ route('images.store') }}"
+                            method="POST"
+                            enctype="multipart"
+                        >
+                            @csrf
                             <div
-                                class="dropzone rounder flex w-full cursor-pointer flex-col items-center justify-center rounded-xl border-[4px] border-dashed border-gray-200 bg-gray-50 shadow-md transition-opacity hover:opacity-70"
-                                id="dropzone"
+                                class="dz-message font-bold uppercase text-gray-500"
+                                data-dz-message
                             >
-                                @csrf
-                                <div
-                                    class="dz-message font-bold uppercase text-gray-500"
-                                    data-dz-message
-                                >
-                                    <span>
-                                        Suelta
-                                        <span class="underline">
-                                            aquí
-                                        </span>
-                                        tu imagen
+                                <span>
+                                    Suelta
+                                    <span class="underline">
+                                        aquí
                                     </span>
-                                </div>
+                                    tu imagen
+                                </span>
+
                             </div>
-                        </div>
-                    </section>
-                    <section class="section__right w-full lg:w-1/2">
+                        </form>
+                    </div>
+                </section>
+                <section class="section__right w-full lg:w-1/2">
+                    <form
+                        id="form-edit-profile"
+                        action="{{ route('profile.store', ['user' => $user]) }}"
+                        method="POST"
+                        novalidate
+                        autocomplete="off"
+                    >
                         <div class="mb-5">
                             <label
                                 class="mb-2 block font-bold uppercase text-gray-500"
@@ -165,17 +173,32 @@
                             />
 
                         </div>
-                    </section>
 
-                </div>
+                        <div class="mb-5">
+                            <input
+                                name="imagen"
+                                type="hidden"
+                                value="{{ auth()->user()->image}}"
+                            />
+                            @error('imagen')
+                                <p
+                                    class="my-2 w-full rounded-lg bg-red-500 p-2 text-center text-sm text-white">
+                                    {{ $message }}</p>
+                            @enderror
+                        </div>
+                    </form>
+                </section>
 
-                <button
-                    class="w-full cursor-pointer rounded-lg bg-sky-600 p-3 font-bold uppercase text-white transition-colors hover:bg-sky-700"
-                    type="submit"
-                >
-                    Cambiar perfil
-                </button>
-            </form>
+            </div>
+
+            <button
+                class="w-full cursor-pointer rounded-lg bg-sky-600 p-3 font-bold uppercase text-white transition-colors hover:bg-sky-700"
+                type="button"
+                onclick="document.getElementById('form-edit-profile').submit();"
+            >
+                Cambiar perfil
+            </button>
+
         </div>
     </div>
 @endsection
