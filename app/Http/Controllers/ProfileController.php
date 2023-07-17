@@ -73,7 +73,8 @@ class ProfileController extends Controller
 		$userBD->image = $request->imagen;
 		$userBD->save();
 
-		return back();
+		return redirect()->route('posts.index', $userBD->path)->with('status', 'Perfil actualizado correctamente');
 		// dd('guardar');
+
 	}
 }
