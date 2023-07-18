@@ -179,7 +179,7 @@
                             <input
                                 name="imagen"
                                 type="hidden"
-                                value="{{ old('imagen') ?: $user->imagen }}"
+                                value="{{ old('imagen') ?: $user->image }}"
                             />
 
                             @error('imagen')

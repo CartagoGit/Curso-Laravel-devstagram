@@ -77,7 +77,9 @@ class ProfileController extends Controller
 		$userBD->username = $request->nick;
 		$userBD->email = $request->email;
 		$userBD->path = $request->path;
-		$userBD->image = $request->imagen;
+		if ($request->imagen) {
+			$userBD->image = $request->imagen;
+		}
 		if ($request->password) {
 			$userBD->password = bcrypt($request->password);
 		}
