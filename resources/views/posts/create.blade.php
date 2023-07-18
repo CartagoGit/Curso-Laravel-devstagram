@@ -19,11 +19,17 @@
                 class="dropzone rounder flex w-full cursor-pointer flex-col items-center justify-center rounded-xl border-[4px] border-dashed border-gray-200 bg-gray-50 shadow-xl transition-opacity hover:opacity-70"
                 id="dropzone"
                 novalidate
-                action="{{ route('images.store') }}"
                 method="POST"
                 enctype="multipart"
+                action="{{ route('images.store', ['kind' => 'posts']) }}"
             >
                 @csrf
+                <!-- Otros campos del formulario aquí -->
+                {{-- <input
+                    name="kind"
+                    type="hidden"
+                    value="posts"
+                > --}}
                 <div
                     class="dz-message font-bold uppercase text-gray-500"
                     data-dz-message
@@ -43,7 +49,6 @@
                 novalidate
                 action="{{ route('posts.store') }}"
                 method="POST"
-                novalidate
             >
                 @csrf
                 <div class="mb-5">

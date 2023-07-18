@@ -10,15 +10,19 @@ use Intervention\Image\Facades\Image;
 class ImageController extends Controller
 {
 	//
-	public function store(Request $request)
+	public function store(Request $request, string $kind)
 	{
+	
+		//* $kind => users, posts, comments, profiles -> nombre de la carpeta donde se guardara la imagen
+		// $kind = $request->input('kind');
+
 		//  return "Imagen controller";
 		$image = $request->file('file');
 		$nombreImage = Str::uuid() . '.' . $image->extension();
 		$imagenServidor = Image::make($image);
 		$imagenServidor->fit(1000, 1000);
 		// $imagenPath = public_path('uploads') . '/images/' . $nombreImage;
-		$baseCarpeta = 'uploads/images';
+		$baseCarpeta = $kind . '/images';
 		$rutaCarpeta = public_path($baseCarpeta);
 		if (!file_exists($rutaCarpeta)) {
 			mkdir($rutaCarpeta, 0755, true);
@@ -42,6 +46,4 @@ class ImageController extends Controller
 
 		return response()->json(['data' => $imageData]);
 	}
-
-	
 }

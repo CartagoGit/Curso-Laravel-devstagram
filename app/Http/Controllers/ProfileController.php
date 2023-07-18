@@ -30,7 +30,9 @@ class ProfileController extends Controller
 		//* Comprobamos si el password de verificación es el actual password
 		$request = request();
 		if (!Hash::check($request->actual_password, auth()->user()->password)) {
-			return back()->withErrors(['actual_password' => 'Creedencial invalida']);
+			return back()
+				->withErrors(['actual_password' => 'Creedencial invalida'])
+				->withInput();
 		}
 
 

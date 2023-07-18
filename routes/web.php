@@ -34,13 +34,13 @@ Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
 Route::get('/{user:path}', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
-Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+Route::post('/posts/store', [PostController::class, 'store'])->name('posts.store');
 Route::get('/{user:path}/posts/{post:id}', [PostController::class, 'show'])->name('posts.show');
 Route::delete('/{user:path}/posts/{post:id}', [PostController::class, 'destroy'])->name('posts.destroy');
 
 Route::post('/{user:path}/posts/{post:id}', [CommentController::class, 'store'])->name('comments.store');
 
-Route::post('/images', [ImageController::class, 'store'])->name('images.store');
+Route::post('/images/{kind}', [ImageController::class, 'store'])->name('images.store');
 
 Route::post('/likes', [LikeController::class, 'store'])->name('likes.store');
 Route::delete('/likes', [LikeController::class, 'destroy'])->name('likes.destroy');

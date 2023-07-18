@@ -33,7 +33,7 @@
                             class="flex dropzone rounder min-h-[400px] max-h-[560px] flex w-full cursor-pointer flex-col items-center justify-center rounded-xl border-[4px] border-dashed border-gray-200 bg-gray-50 shadow-xl transition-opacity hover:opacity-70"
                             id="dropzone"
                             novalidate
-                            action="{{ route('images.store') }}"
+                            action="{{ route('images.store', 'profiles') }}"
                             method="POST"
                             enctype="multipart"
                         >
