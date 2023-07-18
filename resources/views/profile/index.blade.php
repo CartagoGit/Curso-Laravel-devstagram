@@ -198,10 +198,11 @@
                                 Contraseña actual
                             </label>
                             <input
-                                class="@error('password') border-red-500 @enderror w-full rounded-lg border p-3 focus:outline-gray-300"
+                                class="@error('password') border-red-500 @enderror border-2 border-orange-400 w-full rounded-lg border p-3 focus:outline-gray-300"
                                 id="actual_password"
                                 name="actual_password"
                                 type="password"
+										  placeholder="Constraseña actual"
                                 value=""
                             />
 
