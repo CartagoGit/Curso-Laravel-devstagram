@@ -6,11 +6,14 @@
         <div
             class="flex w-full flex-col flex-wrap items-center sm:w-8/12 md:flex-row xl:w-6/12">
             <div class="w-6/12 px-5">
+
                 <img
-                    src="{{ asset('img/user/usuario.svg') }}"
+                    class="@if ($user->image) outline outline-1 outline-gray-800 @endif overflow-hidden rounded-lg"
+                    src="{{ $user->image ?: asset('img/user/usuario.svg') }}"
                     alt="imagen del usuario"
                 />
             </div>
+
             <div
                 class="flex flex-col items-center px-5 pt-5 sm:w-6/12 md:items-start md:justify-center md:px-10">
                 {{--
