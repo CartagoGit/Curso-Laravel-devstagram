@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
@@ -26,7 +27,14 @@ class ProfileController extends Controller
 
 	public function store(User $user)
 	{
+		//* Comprobamos si el password de verificación es el actual password
 		$request = request();
+		if (!Hash::check($request->actual_password, auth()->user()->password)) {
+			return back()->withErrors(['actual_password' => 'Creedencial invalida']);
+		}
+
+
+		// * Agregar el campo path al request
 		$request->request->add(['path' => Str::slug($request->nick)]);
 
 		// * Validaciones

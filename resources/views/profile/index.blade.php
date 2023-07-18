@@ -28,9 +28,9 @@
                             type="file"
                         > --}}
                     <div
-                        class="flex h-full max-h-full min-h-[200px] self-stretch px-10 pb-5">
+                        class="h-full min-h-[200px] flex h-full self-stretch px-10 pb-5 flex items-center justify-center">
                         <form
-                            class="dropzone rounder flex max-h-[458px] w-full cursor-pointer flex-col items-center justify-center rounded-xl border-[4px] border-dashed border-gray-200 bg-gray-50 shadow-xl transition-opacity hover:opacity-70"
+                            class="flex dropzone rounder min-h-[400px] max-h-[560px] flex w-full cursor-pointer flex-col items-center justify-center rounded-xl border-[4px] border-dashed border-gray-200 bg-gray-50 shadow-xl transition-opacity hover:opacity-70"
                             id="dropzone"
                             novalidate
                             action="{{ route('images.store') }}"
@@ -183,6 +183,29 @@
                             />
 
                             @error('imagen')
+                                <p
+                                    class="my-2 w-full rounded-lg bg-red-500 p-2 text-center text-sm text-white">
+                                    {{ $message }}
+                                </p>
+                            @enderror
+                        </div>
+
+                        <div class="mb-5">
+                            <label
+                                class="mb-2 block font-bold uppercase text-gray-500"
+                                for="password_confirmation"
+                            >
+                                Contraseña actual
+                            </label>
+                            <input
+                                class="@error('password') border-red-500 @enderror w-full rounded-lg border p-3 focus:outline-gray-300"
+                                id="actual_password"
+                                name="actual_password"
+                                type="password"
+                                value=""
+                            />
+
+                            @error('actual_password')
                                 <p
                                     class="my-2 w-full rounded-lg bg-red-500 p-2 text-center text-sm text-white">
                                     {{ $message }}
