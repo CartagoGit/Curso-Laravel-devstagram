@@ -28,9 +28,9 @@
                             type="file"
                         > --}}
                     <div
-                        class="h-full min-h-[200px] flex h-full self-stretch px-10 pb-5 flex items-center justify-center">
+                        class="flex flex h-full h-full min-h-[200px] items-center justify-center self-stretch px-10 pb-5">
                         <form
-                            class="flex dropzone rounder min-h-[400px] max-h-[560px] flex w-full cursor-pointer flex-col items-center justify-center rounded-xl border-[4px] border-dashed border-gray-200 bg-gray-50 shadow-xl transition-opacity hover:opacity-70"
+                            class="dropzone rounder flex flex max-h-[560px] min-h-[400px] w-full cursor-pointer flex-col items-center justify-center rounded-xl border-[4px] border-dashed border-gray-200 bg-gray-50 shadow-xl transition-opacity hover:opacity-70"
                             id="dropzone"
                             novalidate
                             action="{{ route('images.store', 'profiles') }}"
@@ -198,12 +198,12 @@
                                 Contraseña actual
                             </label>
                             <input
-                                class="@error('password') border-red-500 @enderror border-2 border-orange-400 w-full rounded-lg border p-3 focus:outline-gray-300"
+                                class="@error('password') border-red-500 @enderror w-full rounded-lg border border-2 border-orange-400 p-3 focus:outline-gray-300"
                                 id="actual_password"
                                 name="actual_password"
                                 type="password"
-										  placeholder="Constraseña actual"
                                 value=""
+                                placeholder="Constraseña actual"
                             />
 
                             @error('actual_password')

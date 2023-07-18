@@ -60,8 +60,18 @@
                     <span class="font-normal"> Siguiendo </span>
                 </p>
                 <p class="mb-3 text-sm font-bold text-gray-800">
-                    {{ $posts->count() }}
-                    <span class="font-normal"> Posts </span>
+                    @php
+                        use App\Models\User;
+                    @endphp
+                    {{ User::find($user->id)->posts()->count() }}
+
+                    <span class="font-normal">
+                        @if ($posts->count() === 1)
+                            Publicación
+                        @else
+                            Publicaciones
+                        @endif
+                    </span>
                 </p>
             </div>
         </div>
