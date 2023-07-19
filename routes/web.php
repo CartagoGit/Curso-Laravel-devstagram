@@ -1,16 +1,17 @@
 <?php
 
 
-use App\Http\Controllers\LikeController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\FollowerController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\PageNotFoundController;
-use App\Http\Controllers\CommentController;
-use App\Http\Controllers\ImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,7 +57,8 @@ Route::get('{user:path}/edit', [ProfileController::class, 'index'])->name('profi
 Route::post('{user:path}/edit', [ProfileController::class, 'store'])->name('profile.store');
 
 //* Follows a usuarios
-Route::post('/{user:path}/follow', [ProfileController::class, 'follow'])->name('follows.store');
+Route::post('/{user:path}/follow', [FollowerController::class, 'index'])->name('follow.store');
+Route::delete('/{user:path}/follow', [FollowerController::class, 'destroy'])->name('follow.destroy');
 
 //* Devuelve cualquier vista que no coincida a login o a dashboard dependiendo si está autenticado o no
 // Route::get('/{any}', [PageNotFoundController::class, 'redirectAuth'])->where('any', '.*')->name('root');
