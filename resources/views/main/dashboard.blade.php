@@ -15,11 +15,11 @@
             </div>
 
             <div
-                class="flex flex-col items-center px-5 pt-5 sm:w-6/12 md:items-start md:justify-center md:px-10">
+                class="flex h-full flex-col items-center px-5 pt-5 sm:w-6/12 md:items-start md:justify-center md:px-10">
                 {{--
 			<p class="text-2xl text-gray-700">{{ auth()->user()->name }}</p>
 			--}}
-                <div class="mb-5 flex items-center">
+                <div class="mb-5 mt-auto flex items-center">
                     <span class="flex gap-2 text-2xl text-gray-700">
                         <span class="flex">{{ $user->name }}</span>
                         @auth()
@@ -59,7 +59,7 @@
                     {{ count($followed) }}
                     <span class="font-normal"> Siguiendo </span>
                 </p>
-                <p class="mb-3 text-sm font-bold text-gray-800">
+                <p class="mb-3 mb-auto text-sm font-bold text-gray-800">
                     @php
                         use App\Models\User;
                     @endphp
@@ -73,6 +73,29 @@
                         @endif
                     </span>
                 </p>
+
+                @if (auth()->check())
+                    <form
+                        action=""
+                        method="POST"
+                    >
+                        @csrf
+                        {{-- @if (auth()->user()->isFollowing($user)) --}}
+                        @if (auth()->user())
+                            <input
+                                class="cursor-pointer rounded-lg bg-blue-600 px-3 py-1 text-xs font-bold uppercase text-white transition-colors hover:bg-blue-700"
+                                type="submit"
+                                value="Seguir"
+                            />
+                        @else
+                            <input
+                                class="cursor-pointer rounded-lg bg-orange-500 px-3 py-1 text-xs font-bold uppercase text-white transition-colors hover:bg-orange-600"
+                                type="submit"
+                                value="Dejar de seguir"
+                            />
+                        @endif
+                    </form>
+                @endif
             </div>
         </div>
     </header>
