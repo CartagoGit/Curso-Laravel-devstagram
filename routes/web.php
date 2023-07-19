@@ -57,7 +57,7 @@ Route::get('{user:path}/edit', [ProfileController::class, 'index'])->name('profi
 Route::post('{user:path}/edit', [ProfileController::class, 'store'])->name('profile.store');
 
 //* Follows a usuarios
-Route::post('/{user:path}/follow', [FollowerController::class, 'index'])->name('follow.store');
+Route::post('/{user:path}/follow', [FollowerController::class, 'store'])->name('follow.store');
 Route::delete('/{user:path}/follow', [FollowerController::class, 'destroy'])->name('follow.destroy');
 
 //* Devuelve cualquier vista que no coincida a login o a dashboard dependiendo si está autenticado o no
