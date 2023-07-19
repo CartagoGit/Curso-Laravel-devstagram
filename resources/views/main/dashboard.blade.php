@@ -19,10 +19,8 @@
             </div>
 
             <div
-                class="flex h-full flex-col items-center px-5 pt-5 sm:w-6/12 md:items-start md:justify-center md:px-10">
-                {{--
-			<p class="text-2xl text-gray-700">{{ auth()->user()->name }}</p>
-			--}}
+                class="flex md:h-full flex-col items-center px-5 pt-5 sm:w-6/12 md:items-start md:justify-center md:px-10">
+
                 <div class="mb-5 mt-auto flex items-center">
                     <span class="flex gap-2 text-2xl text-gray-700">
                         <span class="flex">{{ $user->name }}</span>
