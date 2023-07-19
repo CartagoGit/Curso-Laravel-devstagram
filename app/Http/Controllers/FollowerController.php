@@ -16,15 +16,15 @@ class FollowerController extends Controller
 	public function store(Request $request, User $followed)
 	{
 		$follower = auth()->user();
-		$existFollow = Follower::where('followed_id', $followed->id)
-			->where('follower_id', $follower->id)
+		$existFollow = Follower::where('user_followed_id', $followed->id)
+			->where('user_follower_id', $follower->id)
 			->exists();
 		if ($existFollow) {
 			$this->destroy($request, $followed);
 		}
 		Follower::create([
-			'followed_id' => $followed->id,
-			'follower_id' => $follower->id,
+			'user_followed_id' => $followed->id,
+			'user_follower_id' => $follower->id,
 		]);
 		return back();
 	}
@@ -35,8 +35,8 @@ class FollowerController extends Controller
 		if ($followed->id === $follower->id) {
 			return back();
 		}
-		$followBD = Follower::where('followed_id', $followed->id)
-			->where('follower_id', $follower->id)
+		$followBD = Follower::where('user_followed_id', $followed->id)
+			->where('user_follower_id', $follower->id)
 			->first();
 		$existFollow = $followBD->exists();
 		if (!$existFollow) {
