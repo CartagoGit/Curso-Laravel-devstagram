@@ -53,12 +53,15 @@
                 </div>
                 <p class="mb-3 text-sm font-bold text-gray-800">
 
-                    {{ $user->countOfFollowers() }}
-                    <span class="font-normal"> Seguidores </span>
+                    {{ $user->numberOfFollowers() }}
+                    <span class="font-normal">
+                        {{-- {{ $user->numberOfFollowers() === 1 ? 'Seguidor' : 'Seguidores' }} --}}
+                        @choice('Seguidor|Seguidores', $user->numberOfFollowers())
+                    </span>
                 </p>
                 <p class="mb-3 text-sm font-bold text-gray-800">
 
-                    {{ $user->countOfFollowed() }}
+                    {{ $user->numberOfFollowed() }}
                     <span class="font-normal"> Siguiendo </span>
                 </p>
                 <p class="mb-3 mb-auto text-sm font-bold text-gray-800">
@@ -84,7 +87,7 @@
                         {{-- * Condicional según la logica mia en el controller --}}
                         {{-- @if (!$user->isFollowedBy(auth()->user())) --}}
 
-                        @if (!(auth()->user()->isFollowing($user)))
+                        @if (!auth()->user()->isFollowing($user))
                             <input
                                 class="cursor-pointer rounded-lg bg-blue-600 px-3 py-1 text-xs font-bold uppercase text-white transition-colors hover:bg-blue-700"
                                 type="submit"

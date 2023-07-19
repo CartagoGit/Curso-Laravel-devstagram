@@ -93,12 +93,12 @@ class User extends Authenticatable
 		return $this->followed->contains($followed->id);
 	}
 
-	public function countOfFollowers(): int
+	public function numberOfFollowers(): int
 	{
 		return $this->followers->count();
 	}
 
-	public function countOfFollowed(): int
+	public function numberOfFollowed(): int
 	{
 		return $this->followed->count();
 	}
