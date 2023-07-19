@@ -74,13 +74,15 @@
                     </span>
                 </p>
 
-                @if (auth()->check())
+                @if (auth()->check() && auth()->user()->id !== $user->id)
+
                     <form
-                        action=""
+                        action="{{ route('follower.' . (auth()->user() ? 'store' : 'destroy'), ['followed' => $user]) }}"
                         method="POST"
                     >
                         @csrf
                         {{-- @if (auth()->user()->isFollowing($user)) --}}
+
                         @if (auth()->user())
                             <input
                                 class="cursor-pointer rounded-lg bg-blue-600 px-3 py-1 text-xs font-bold uppercase text-white transition-colors hover:bg-blue-700"
@@ -88,6 +90,7 @@
                                 value="Seguir"
                             />
                         @else
+                            @method('DELETE')
                             <input
                                 class="cursor-pointer rounded-lg bg-orange-500 px-3 py-1 text-xs font-bold uppercase text-white transition-colors hover:bg-orange-600"
                                 type="submit"
