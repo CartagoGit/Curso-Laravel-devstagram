@@ -3,7 +3,10 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -45,47 +48,57 @@ class User extends Authenticatable
 		'password' => 'hashed',
 	];
 
-	public function posts()
+	public function posts(): HasMany
 	{
 		return $this->hasMany(Post::class);
 	}
 
-	public function comments()
+	public function comments(): HasMany
 	{
 		return $this->hasMany(Comment::class);
 	}
 
-	public function likes()
+	public function likes(): HasMany
 	{
 		return $this->hasMany(Like::class);
 	}
 
-	public function followers()
+	public function followers(): BelongsToMany
 	{
-		return $this->hasMany(Follower::class, 'user_followed_id');
+		return $this->belongsToMany(User::class, 'followers', 'user_followed_id', 'user_follower_id');
+	}
+	// {
+	// 	return $this->hasMany(Follower::class, 'user_followed_id');
+	// }
+
+
+	public function followed(): BelongsToMany
+	{
+		// return $this->hasMany(Follower::class, 'user_follower_id');
+		return $this->belongsToMany(User::class, 'followers', 'user_follower_id', 'user_followed_id');
 	}
 
-	public function followed()
+	public function isFollowedBy(User $follower): bool
 	{
-		return $this->hasMany(Follower::class, 'user_follower_id');
+		//* Asi antes porque buscabamos en la tabla de Followers, pero al hacer el belongs to many, lo que busca es un usuario con dicho id
+		// return $this->followers->contains('user_follower_id', $follower->id);
+		return $this->followers->contains($follower->id);
 	}
 
-	public function isFollowedBy(User $follower)
+	public function isFollowing(User $followed): bool
 	{
-		return $this->followers->contains('user_follower_id', $follower->id);
+
+		//* Asi antes porque buscabamos en la tabla de Followers, pero al hacer el belongs to many, lo que busca es un usuario con dicho id
+		// return $this->followed->contains('user_followed_id', $followed->id);
+		return $this->followed->contains($followed->id);
 	}
 
-	public function isFollowing(User $followed)
-	{
-		return $this->followed->contains('user_followed_id', $followed->id);
-	}
-
-	public function countOfFollowers()
+	public function countOfFollowers(): int
 	{
 		return $this->followers->count();
 	}
 
-	public function countOfFollowed()
+	public function countOfFollowed(): int
 	{
 		return $this->followed->count();
 	}

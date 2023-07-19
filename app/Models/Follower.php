@@ -24,14 +24,4 @@ class Follower extends Model
 	{
 		return $this->belongsTo(User::class, 'user_follower_id');
 	}
-
-	public function followers()
-	{
-		return $this->hasMany(User::class, 'user_follower_id');
-	}
-
-	public function followed()
-	{
-		return $this->hasMany(User::class, 'user_followed_id');
-	}
 }

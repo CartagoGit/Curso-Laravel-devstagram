@@ -19,7 +19,7 @@
             </div>
 
             <div
-                class="flex md:h-full flex-col items-center px-5 pt-5 sm:w-6/12 md:items-start md:justify-center md:px-10">
+                class="flex flex-col items-center px-5 pt-5 sm:w-6/12 md:h-full md:items-start md:justify-center md:px-10">
 
                 <div class="mb-5 mt-auto flex items-center">
                     <span class="flex gap-2 text-2xl text-gray-700">
@@ -81,7 +81,10 @@
                     >
                         @csrf
 
-                        @if (!$user->isFollowedBy(auth()->user()))
+                        {{-- * Condicional según la logica mia en el controller --}}
+                        {{-- @if (!$user->isFollowedBy(auth()->user())) --}}
+
+                        @if (!(auth()->user()->isFollowing($user)))
                             <input
                                 class="cursor-pointer rounded-lg bg-blue-600 px-3 py-1 text-xs font-bold uppercase text-white transition-colors hover:bg-blue-700"
                                 type="submit"
