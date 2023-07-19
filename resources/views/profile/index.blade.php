@@ -30,7 +30,7 @@
                     <div
                         class="flex flex h-full h-full min-h-[200px] items-center justify-center self-stretch px-10 pb-5">
                         <form
-                            class="dropzone rounder flex flex max-h-[560px] min-h-[400px] w-full cursor-pointer flex-col items-center justify-center rounded-xl border-[4px] border-dashed border-gray-200 bg-gray-50 shadow-xl transition-opacity hover:opacity-70"
+                            class="dropzone rounder flex flex max-h-[560px] min-h-[200px] md:min-h-[400px] w-full cursor-pointer flex-col items-center justify-center rounded-xl border-[4px] border-dashed border-gray-200 bg-gray-50 shadow-xl transition-opacity hover:opacity-70"
                             id="dropzone"
                             novalidate
                             action="{{ route('images.store', 'profiles') }}"

@@ -23,30 +23,40 @@ use App\Http\Controllers\ImageController;
 |
 */
 
-
+//* Registro de usuario
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
 
+//* Login de usuario
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
 
+//* Logout
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
+//* CRUD de publicaciones
 Route::get('/{user:path}', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 Route::post('/posts/store', [PostController::class, 'store'])->name('posts.store');
 Route::get('/{user:path}/posts/{post:id}', [PostController::class, 'show'])->name('posts.show');
 Route::delete('/{user:path}/posts/{post:id}', [PostController::class, 'destroy'])->name('posts.destroy');
 
+//* Crear comentarios
 Route::post('/{user:path}/posts/{post:id}', [CommentController::class, 'store'])->name('comments.store');
 
+//* Añadir imagenes
 Route::post('/images/{kind}', [ImageController::class, 'store'])->name('images.store');
 
+//* Dar likes a las publicaciones y comentarios
 Route::post('/likes', [LikeController::class, 'store'])->name('likes.store');
 Route::delete('/likes', [LikeController::class, 'destroy'])->name('likes.destroy');
 
+//* Edicion de perfil
 Route::get('{user:path}/edit', [ProfileController::class, 'index'])->name('profile.index');
 Route::post('{user:path}/edit', [ProfileController::class, 'store'])->name('profile.store');
+
+//* Follows a usuarios
+Route::post('/{user:path}/follow', [ProfileController::class, 'follow'])->name('follows.store');
 
 //* Devuelve cualquier vista que no coincida a login o a dashboard dependiendo si está autenticado o no
 // Route::get('/{any}', [PageNotFoundController::class, 'redirectAuth'])->where('any', '.*')->name('root');
