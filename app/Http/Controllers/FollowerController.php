@@ -21,6 +21,7 @@ class FollowerController extends Controller
 			->exists();
 		if ($existFollow) {
 			$this->destroy($request, $followed);
+			return back();
 		}
 		Follower::create([
 			'user_followed_id' => $followed->id,
@@ -32,15 +33,17 @@ class FollowerController extends Controller
 	public function destroy(Request $request, User $followed)
 	{
 		$follower = auth()->user();
+
 		if ($followed->id === $follower->id) {
 			return back();
 		}
 		$followBD = Follower::where('user_followed_id', $followed->id)
 			->where('user_follower_id', $follower->id)
 			->first();
-		$existFollow = $followBD->exists();
-		if (!$existFollow) {
+
+		if (!$followBD) {
 			$this->store($request, $followed);
+			return back();
 		}
 
 		$followBD->delete();

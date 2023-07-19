@@ -2,6 +2,10 @@
     Perfil de {{ $user->username }}
 @endsection
 @section('contenido')
+    @php
+        use App\Models\User;
+        $user = User::find($user->id);
+    @endphp
     <header class="flex justify-center">
         <div
             class="flex w-full flex-col flex-wrap items-center sm:w-8/12 md:flex-row xl:w-6/12">
@@ -50,20 +54,18 @@
                     </span>
                 </div>
                 <p class="mb-3 text-sm font-bold text-gray-800">
-                    <!-- REVIEW HARCODEADO DESDE POST CONTRROLLER -->
-                    {{ count($followers) }}
+
+                    {{ $user->countOfFollowers() }}
                     <span class="font-normal"> Seguidores </span>
                 </p>
                 <p class="mb-3 text-sm font-bold text-gray-800">
-                    <!-- REVIEW HARCODEADO DESDE POST CONTRROLLER -->
-                    {{ count($followed) }}
+
+                    {{ $user->countOfFollowed() }}
                     <span class="font-normal"> Siguiendo </span>
                 </p>
                 <p class="mb-3 mb-auto text-sm font-bold text-gray-800">
-                    @php
-                        use App\Models\User;
-                    @endphp
-                    {{ User::find($user->id)->posts()->count() }}
+
+                    {{ $user->posts()->count() }}
 
                     <span class="font-normal">
                         @if ($posts->count() === 1)
@@ -75,15 +77,13 @@
                 </p>
 
                 @if (auth()->check() && auth()->user()->id !== $user->id)
-
                     <form
                         action="{{ route('follower.' . (auth()->user() ? 'store' : 'destroy'), ['followed' => $user]) }}"
                         method="POST"
                     >
                         @csrf
-                        {{-- @if (auth()->user()->isFollowing($user)) --}}
 
-                        @if (auth()->user())
+                        @if (!$user->isFollowedBy(auth()->user()))
                             <input
                                 class="cursor-pointer rounded-lg bg-blue-600 px-3 py-1 text-xs font-bold uppercase text-white transition-colors hover:bg-blue-700"
                                 type="submit"

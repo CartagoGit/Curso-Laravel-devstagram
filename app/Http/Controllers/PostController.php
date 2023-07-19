@@ -25,11 +25,7 @@ class PostController extends Controller
 		$user = User::where('path', $userPath)->first();
 		$posts = Post::where('user_id', $user->id)->paginate();
 
-		// REVIEW Hardcodeado
-		$followers = ['algo', 'algomas', 'algo', 'algomas', 'algo', 'algomas', 'algo', 'algomas', 'algo', 'algomas'];
-		$followed = ['seguido', 'seguido2', 'seguido3', 'seguido', 'seguido2', 'seguido3', 'seguido', 'seguido2', 'seguido3', 'seguido', 'seguido2', 'seguido3', 'seguido', 'seguido2', 'seguido3'];
-
-		return view('main.dashboard', ['user' => $user, 'posts' => $posts, 'followers' => $followers, 'followed' => $followed]);
+		return view('main.dashboard', ['user' => $user, 'posts' => $posts]);
 	}
 
 	public function create()
