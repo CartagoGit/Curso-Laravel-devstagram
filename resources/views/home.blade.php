@@ -6,7 +6,17 @@
 
 @section('contenido')
     @if ($posts->count())
-	 <h1 class="flex justify-center uppercase text-lg font-extrabold text-purple-800">Publicaciones de personas a las que sigues</h1>
+        <h1
+            class="flex justify-center text-lg font-extrabold uppercase text-gray-400">
+            @if (auth()->check())
+                Publicaciones de personas a las que sigues
+            @else
+                <a href="{{ route('register') }}">
+                    Últimas publicaciones. Registrate para participar
+                </a>
+            @endif
+        </h1>
+
         <div class="flex flex-wrap justify-center">
             @foreach ($posts as $post)
                 <article
@@ -30,7 +40,7 @@
                         </p>
                     </a>
                     <a
-                        class="flex flex-col h-full"
+                        class="flex h-full flex-col"
                         href="{{ route('posts.show', [$post->user, $post->id]) }}"
                     >
                         <span
