@@ -21,7 +21,8 @@
         <div
             class="container mx-auto flex flex-col items-center justify-between md:flex-row">
 
-            <h1 class="text-3xl font-black"> <a href="/">DevStagram </a>
+            <h1 class="text-3xl font-black"> <a
+                    href="{{ route('home') }}">DevStagram </a>
             </h1>
             <nav
                 class="sx:gap-5 flex w-full justify-between gap-3 pt-5 sm:gap-10 md:w-auto md:justify-end md:pt-0">

@@ -25,7 +25,7 @@ class PostController extends Controller
 		$user = User::where('path', $userPath)->first();
 		$posts = Post::where('user_id', $user->id)->paginate();
 
-		return view('main.dashboard', ['user' => $user, 'posts' => $posts]);
+		return view('posts.index', ['user' => $user, 'posts' => $posts]);
 	}
 
 	public function create()
