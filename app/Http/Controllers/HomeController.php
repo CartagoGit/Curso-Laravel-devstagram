@@ -13,7 +13,7 @@ class HomeController extends Controller
 		// Obtener a quienes seguimos
 		$ids = auth()->user()->followed->pluck('id')->toArray();
 		array_push($ids, auth()->id());
-		$posts = Post::whereIn('user_id', $ids)->latest()->paginate(20);
+		$posts = Post::whereIn('user_id', $ids)->latest()->paginate(10);
 
 		return view('home', ['posts' => $posts]);
 	}
