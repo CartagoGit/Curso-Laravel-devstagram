@@ -6,6 +6,7 @@
 
 @section('contenido')
     @if ($posts->count())
+	 <h1 class="flex justify-center uppercase text-lg font-extrabold text-purple-800">Publicaciones de personas a las que sigues</h1>
         <div class="flex flex-wrap justify-center">
             @foreach ($posts as $post)
                 <article
