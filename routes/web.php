@@ -12,6 +12,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\PageNotFoundController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,9 @@ use App\Http\Controllers\Auth\PageNotFoundController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+// * Pagina principal
+Route::get('/', HomeController::class)->name('home');
 
 //* Registro de usuario
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
