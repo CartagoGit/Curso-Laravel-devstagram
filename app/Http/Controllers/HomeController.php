@@ -20,6 +20,6 @@ class HomeController extends Controller
 		// array_push($ids, auth()->id());
 		$posts = Post::whereIn('user_id', $ids)->latest()->paginate(10);
 
-		return view('home', ['posts' => $posts]);
+		return view('main.home', ['posts' => $posts]);
 	}
 }
