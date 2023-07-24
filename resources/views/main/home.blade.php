@@ -7,7 +7,7 @@
 @section('contenido')
     @if ($posts->count())
         {{-- <x-list-posts :posts="$posts" /> --}}
-        <x-list-posts>
+        <x-list-posts :posts="$posts">
             <x-slot:title>
                 <h1
                     class="flex justify-center text-lg font-extrabold uppercase text-gray-400">
@@ -21,25 +21,25 @@
                 </h1>
 
             </x-slot:title>
-				<x-slot:creator>
-					<a
-					class="w-full bg-white p-2 text-center transition-colors hover:bg-gray-200"
-					href={{ route('posts.index', [$post->user]) }}
-			  >
+            <x-slot:creator>
+                <a
+                    class="w-full bg-white p-2 text-center transition-colors hover:bg-gray-200"
+                    href={{ route('posts.index', [$post->user]) }}
+                >
 
-					<p
-						 class="line-clamp-1"
-						 title="{{ $post->user->username }}"
-					>
-						 <span>
-							  Usuario:
-						 </span>
-						 <span class="text-lg font-bold uppercase text-sky-800">
-							  {{ $post->user->username }}
-						 </span>
-					</p>
-			  </a>
-					 </x-slot:creator>
+                    <p
+                        class="line-clamp-1"
+                        title="{{ $post->user->username }}"
+                    >
+                        <span>
+                            Usuario:
+                        </span>
+                        <span class="text-lg font-bold uppercase text-sky-800">
+                            {{ $post->user->username }}
+                        </span>
+                    </p>
+                </a>
+            </x-slot:creator>
         </x-list-posts>
     @else
         <div class="flex flex-col items-center justify-center text-center">
