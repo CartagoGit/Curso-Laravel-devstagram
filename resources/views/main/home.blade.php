@@ -6,25 +6,47 @@
 
 @section('contenido')
     @if ($posts->count())
-        <h1
-            class="flex justify-center text-lg font-extrabold uppercase text-gray-400">
-            @if (auth()->check())
-                Publicaciones de personas a las que sigues
-            @else
-                <a href="{{ route('register') }}">
-                    Últimas publicaciones. Registrate para participar
-                </a>
-            @endif
-        </h1>
+        {{-- <x-list-posts :posts="$posts" /> --}}
+        <x-list-posts>
+            <x-slot:title>
+                <h1
+                    class="flex justify-center text-lg font-extrabold uppercase text-gray-400">
+                    @if (auth()->check())
+                        Publicaciones de personas a las que sigues
+                    @else
+                        <a href="{{ route('register') }}">
+                            Últimas publicaciones. Registrate para participar
+                        </a>
+                    @endif
+                </h1>
 
-        <x-list-posts :posts="$posts" />
+            </x-slot:title>
+				<x-slot:creator>
+					<a
+					class="w-full bg-white p-2 text-center transition-colors hover:bg-gray-200"
+					href={{ route('posts.index', [$post->user]) }}
+			  >
+
+					<p
+						 class="line-clamp-1"
+						 title="{{ $post->user->username }}"
+					>
+						 <span>
+							  Usuario:
+						 </span>
+						 <span class="text-lg font-bold uppercase text-sky-800">
+							  {{ $post->user->username }}
+						 </span>
+					</p>
+			  </a>
+					 </x-slot:creator>
+        </x-list-posts>
     @else
         <div class="flex flex-col items-center justify-center text-center">
             <div class="m-16 flex justify-center">
                 <div
                     class="rounded-xl border-4 border-dashed border-gray-400 bg-white p-4 shadow">
-                    <p
-                        class="text-center text-sm font-bold uppercase text-gray-600">
+                    <p class="text-center text-sm font-bold uppercase text-gray-600">
                         No hay publicaciones
                     </p>
                 </div>
