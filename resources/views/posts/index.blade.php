@@ -111,7 +111,8 @@
             Publicaciones de {{ $user->username }}
         </h2>
         @if ($posts->count())
-            <div class="flex flex-wrap justify-center">
+		  <x-list-posts :posts="$posts" from="posts"/>
+            {{-- <div class="flex flex-wrap justify-center">
                 @foreach ($posts as $post)
                     <a
                         class="mx-4 my-4 flex basis-5/6 cursor-pointer flex-col overflow-hidden rounded-xl border border-gray-700 bg-gray-700 shadow transition-all duration-300 hover:ring hover:ring-gray-500 sm:basis-2/3 md:basis-2/5 lg:basis-1/4 xl:basis-1/5"
@@ -151,7 +152,7 @@
                 <div class="w-96">
                     {{ $posts->links() }}
                 </div>
-            </div>
+            </div> --}}
         @else
             <div class="flex justify-center">
                 <div

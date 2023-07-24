@@ -1,4 +1,4 @@
-{{ $title }}
+{{ $title ?? ''}}
 <div class="flex flex-wrap justify-center">
     @foreach ($posts as $post)
         <article
