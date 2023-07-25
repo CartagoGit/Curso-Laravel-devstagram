@@ -21,14 +21,19 @@ class LikePost extends Component
 
 	public function render()
 	{
-		$this->isLikedByUser =  $this->liked->checkUserLiked(auth()->user());
+		// $this->isLikedByUser =  $this->liked->checkUserLiked(auth()->user());
 		return view('livewire.like-post');
+	}
+
+	public function mount($liked)
+	{
+		$this->isLikedByUser =  $liked->checkUserLiked(auth()->user());
 	}
 
 	public function clickLike()
 	{
-		!$this->isLikedByUser ? $this->_doLike() : $this->_removeLike();
-		$this->isLikedByUser = !$this->isLikedByUser;
+		$this->isLikedByUser ? $this->_removeLike() : $this->_doLike();
+		$this->isLikedByUser =  $this->liked->checkUserLiked(auth()->user());
 	}
 
 	private function _doLike()
