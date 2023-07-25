@@ -4,18 +4,19 @@
     @if (auth()->check())
 
         {{-- @if ($liked->checkUserLiked(auth()->user())) --}}
-        @php
+        {{-- @php
             $isLikedByUser = $liked->checkUserLiked(auth()->user());
-        @endphp
-        <form
+        @endphp --}}
+        {{-- <form
             novalidate
             action="{{ route('likes.' . ($isLikedByUser ? 'destroy' : 'store')) }}"
             method="POST"
-        >
-            @csrf
-            @if ($isLikedByUser)
+        > --}}
+        <div>
+            {{-- @csrf --}}
+            {{-- @if ($isLikedByUser)
                 @method('DELETE')
-            @endif
+            @endif --}}
             <input
                 name="foreign"
                 type="hidden"
@@ -28,12 +29,12 @@
             >
             <button
                 class="text-lg"
-					 wire:click="clickLike"
-					 >
+                wire:click="clickLike"
+            >
                 {{-- type="submit" --}}
                 {{ $isLikedByUser ? '❌' : '💖' }}
             </button>
-        </form>
+        </div>
         {{-- @else
         <form
             novalidate

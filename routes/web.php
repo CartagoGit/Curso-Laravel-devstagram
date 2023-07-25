@@ -52,7 +52,7 @@ Route::post('/{user:path}/posts/{post:id}', [CommentController::class, 'store'])
 //* Añadir imagenes
 Route::post('/images/{kind}', [ImageController::class, 'store'])->name('images.store');
 
-//* Dar likes a las publicaciones y comentarios
+// //* Dar likes a las publicaciones y comentarios
 Route::post('/likes', [LikeController::class, 'store'])->name('likes.store');
 Route::delete('/likes', [LikeController::class, 'destroy'])->name('likes.destroy');
 

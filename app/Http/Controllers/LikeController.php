@@ -73,11 +73,11 @@ class LikeController extends Controller
 	// public function destroy(User $user, $foreign)
 	// {
 
-	// if ($foreign instanceof Post) {
-	// 	$foreign->likes()->where([['post_id', $foreign->id], ['user_id', $user->id]])->delete();
-	// } else if ($foreign instanceof Comment) {
-	// 	$foreign->likes()->where([['comment_id', $foreign->id], ['user_id', $user->id]])->delete();
-	// }
+	// 	if ($foreign instanceof Post) {
+	// 		$foreign->likes()->where([['post_id', $foreign->id], ['user_id', $user->id]])->delete();
+	// 	} else if ($foreign instanceof Comment) {
+	// 		$foreign->likes()->where([['comment_id', $foreign->id], ['user_id', $user->id]])->delete();
+	// 	}
 	// }
 
 	public function destroy(Request $request)
