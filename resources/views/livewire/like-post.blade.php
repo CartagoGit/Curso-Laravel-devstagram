@@ -2,65 +2,12 @@
 
     {{ $liked->likes()->count() }} Likes
     @if (auth()->check())
-
-        {{-- @if ($liked->checkUserLiked(auth()->user())) --}}
-        {{-- @php
-            $isLikedByUser = $liked->checkUserLiked(auth()->user());
-        @endphp --}}
-        {{-- <form
-            novalidate
-            action="{{ route('likes.' . ($isLikedByUser ? 'destroy' : 'store')) }}"
-            method="POST"
-        > --}}
-        <div>
-            {{-- @csrf --}}
-            {{-- @if ($isLikedByUser)
-                @method('DELETE')
-            @endif --}}
-            <input
-                name="foreign"
-                type="hidden"
-                value="{{ $liked }}"
-            >
-            <input
-                name="kindLike"
-                type="hidden"
-                value="{{ $kindLike }}"
-            >
-            <button
-                class="text-lg"
-                wire:click="clickLike"
-            >
-                {{-- type="submit" --}}
-                {{ $isLikedByUser ? '❌' : '💖' }}
-            </button>
-        </div>
-        {{-- @else
-        <form
-            novalidate
-            action="{{ route('likes.store') }}"
-            method="POST"
+        <button
+            class="text-lg"
+            wire:click="clickLike"
         >
-            @csrf
-            <input
-                name="foreign"
-                type="hidden"
-                value="{{ $liked }}"
-            >
-            <input
-                name="kindLike"
-                type="hidden"
-                value="{{ $kindLike }}"
-            >
-            <button
-                class="text-lg"
-                type="submit"
-            >
-
-                💖
-            </button>
-        </form>
-    @endif --}}
+            {{ $isLikedByUser ? '❌' : '💖' }}
+        </button>
     @endif
 
 </span>

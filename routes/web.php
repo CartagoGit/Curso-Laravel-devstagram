@@ -2,7 +2,7 @@
 
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LikeController;
+// use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\CommentController;
@@ -53,8 +53,8 @@ Route::post('/{user:path}/posts/{post:id}', [CommentController::class, 'store'])
 Route::post('/images/{kind}', [ImageController::class, 'store'])->name('images.store');
 
 // //* Dar likes a las publicaciones y comentarios
-Route::post('/likes', [LikeController::class, 'store'])->name('likes.store');
-Route::delete('/likes', [LikeController::class, 'destroy'])->name('likes.destroy');
+// Route::post('/likes', [LikeController::class, 'store'])->name('likes.store');
+// Route::delete('/likes', [LikeController::class, 'destroy'])->name('likes.destroy');
 
 //* Edicion de perfil
 Route::get('{user:path}/edit', [ProfileController::class, 'index'])->name('profile.index');
