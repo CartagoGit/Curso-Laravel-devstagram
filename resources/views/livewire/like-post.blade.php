@@ -3,57 +3,62 @@
     {{ $liked->likes()->count() }} Likes
     @if (auth()->check())
 
-        @if ($liked->checkUserLiked(auth()->user()))
-            <form
-                novalidate
-                action="{{ route('likes.destroy') }}"
-                method="POST"
-            >
-                @csrf
+        {{-- @if ($liked->checkUserLiked(auth()->user())) --}}
+        @php
+            $isLikedByUser = $liked->checkUserLiked(auth()->user());
+        @endphp
+        <form
+            novalidate
+            action="{{ route('likes.' . ($isLikedByUser ? 'destroy' : 'store')) }}"
+            method="POST"
+        >
+            @csrf
+            @if ($isLikedByUser)
                 @method('DELETE')
-                <input
-                    name="foreign"
-                    type="hidden"
-                    value="{{ $liked }}"
-                >
-                <input
-                    name="kindLike"
-                    type="hidden"
-                    value="{{ $kindLike }}"
-                >
-                <button
-                    class="text-lg"
-                    type="submit"
-                >
-                    ❌
-                </button>
-            </form>
-        @else
-            <form
-                novalidate
-                action="{{ route('likes.store') }}"
-                method="POST"
+            @endif
+            <input
+                name="foreign"
+                type="hidden"
+                value="{{ $liked }}"
             >
-                @csrf
-                <input
-                    name="foreign"
-                    type="hidden"
-                    value="{{ $liked }}"
-                >
-                <input
-                    name="kindLike"
-                    type="hidden"
-                    value="{{ $kindLike }}"
-                >
-                <button
-                    class="text-lg"
-                    type="submit"
-                >
+            <input
+                name="kindLike"
+                type="hidden"
+                value="{{ $kindLike }}"
+            >
+            <button
+                class="text-lg"
+                type="submit"
+            >
+                {{ $isLikedByUser ? '❌' : '💖' }}
+            </button>
+        </form>
+        {{-- @else
+        <form
+            novalidate
+            action="{{ route('likes.store') }}"
+            method="POST"
+        >
+            @csrf
+            <input
+                name="foreign"
+                type="hidden"
+                value="{{ $liked }}"
+            >
+            <input
+                name="kindLike"
+                type="hidden"
+                value="{{ $kindLike }}"
+            >
+            <button
+                class="text-lg"
+                type="submit"
+            >
 
-                    💖
-                </button>
-            </form>
-        @endif
-
+                💖
+            </button>
+        </form>
+    @endif --}}
     @endif
+
 </span>
