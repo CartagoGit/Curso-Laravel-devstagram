@@ -22,14 +22,14 @@
                             {{ $post->user->username }}
                         </a>
                     </span>
-                    <span class="flex items-center gap-1 text-right">
-                        {{ $post->likes()->count() }} Likes
-                        @if (auth()->check())
+						  <livewire:like-post
+								:liked="$post"
+								:kindLike="'post'"
+						  />
+                    {{-- <span class="flex items-center gap-1 text-right"> --}}
+							  {{-- {{ $post->likes()->count() }} Likes
+							  @if (auth()->check()) --}}
                             {{-- <form action="{{ route('likes.store', ['user' => auth()->user(), 'foreign' => $post]) }}" --}}
-                            <livewire:like-post
-                                :liked="$post"
-                                :kindLike="'post'"
-                            />
                             {{-- @if ($post->checkUserLiked(auth()->user()))
 
                                 <form
@@ -83,9 +83,9 @@
                                 </form>
                             @endif
 									 --}}
-                        @endif
+                        {{-- @endif --}}
 
-                    </span>
+                    {{-- </span> --}}
                 </div>
                 <p class="text-sm text-gray-500">
                     {{ $post->created_at->diffForHumans() }}</p>
@@ -241,15 +241,15 @@
                                             >Eliminar Comentario</button>
                                         </form>
                                     @endif
-                                    <span class="flex items-center gap-1">
+                                    {{-- <span class="flex items-center gap-1"> --}}
 
-                                        {{ $comment->likes()->count() }} Likes
-                                        @if (auth()->check())
+													<livewire:like-post
+														 :liked="$comment"
+														 :kindLike="'comment'"
+													>
+													{{-- @if (auth()->check()) --}}
+													{{-- {{ $comment->likes()->count() }} Likes --}}
                                             {{-- <form action="{{ route('likes.store', ['user' => auth()->user(), 'foreign' => $post]) }}" --}}
-                                            <livewire:like-post
-                                                :liked="$comment"
-                                                :kindLike="'comment'"
-                                            >
                                                 {{-- <form
                                                 novalidate
                                                 action="{{ route('likes.store') }}"
@@ -273,8 +273,8 @@
                                                     {{ $comment->likes()->where('user_id', auth()->id())->where('comment_id', $comment->id)->exists()? '❌': '💖' }}
                                                 </button>
                                             </form> --}}
-                                        @endif
-                                    </span>
+                                        {{-- @endif --}}
+                                    {{-- </span> --}}
                                 </span>
                             </div>
                             <p></p>
