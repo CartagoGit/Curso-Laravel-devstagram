@@ -28,8 +28,9 @@
             >
             <button
                 class="text-lg"
-                type="submit"
-            >
+					 wire:click="clickLike"
+					 >
+                {{-- type="submit" --}}
                 {{ $isLikedByUser ? '❌' : '💖' }}
             </button>
         </form>

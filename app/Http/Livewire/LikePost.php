@@ -18,4 +18,8 @@ class LikePost extends Component
 	{
 		return view('livewire.like-post');
 	}
+
+	public function clickLike(){
+		
+	}
 }
