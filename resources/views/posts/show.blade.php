@@ -26,8 +26,11 @@
                         {{ $post->likes()->count() }} Likes
                         @if (auth()->check())
                             {{-- <form action="{{ route('likes.store', ['user' => auth()->user(), 'foreign' => $post]) }}" --}}
-										<livewire:like-post />
-                            @if ($post->checkUserLiked(auth()->user()))
+                            <livewire:like-post
+                                :liked="$post"
+                                :kindLike="'post'"
+                            />
+                            {{-- @if ($post->checkUserLiked(auth()->user()))
 
                                 <form
                                     novalidate
@@ -74,12 +77,12 @@
                                         class="text-lg"
                                         type="submit"
                                     >
-                                        {{-- {{ $post->likes()->where('user_id', auth()->id())->where('post_id', $post->id)->exists()? '❌': '💖' }} --}}
-                                        {{-- {{ $post->checkUserLiked(auth()->user()) ? '❌' : '💖' }} --}}
+
                                         💖
                                     </button>
                                 </form>
                             @endif
+									 --}}
                         @endif
 
                     </span>
@@ -243,7 +246,11 @@
                                         {{ $comment->likes()->count() }} Likes
                                         @if (auth()->check())
                                             {{-- <form action="{{ route('likes.store', ['user' => auth()->user(), 'foreign' => $post]) }}" --}}
-                                            <form
+                                            <livewire:like-post
+                                                :liked="$comment"
+                                                :kindLike="'comment'"
+                                            >
+                                                {{-- <form
                                                 novalidate
                                                 action="{{ route('likes.store') }}"
                                                 method="POST"
@@ -265,7 +272,7 @@
                                                 >
                                                     {{ $comment->likes()->where('user_id', auth()->id())->where('comment_id', $comment->id)->exists()? '❌': '💖' }}
                                                 </button>
-                                            </form>
+                                            </form> --}}
                                         @endif
                                     </span>
                                 </span>

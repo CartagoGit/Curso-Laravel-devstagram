@@ -14,7 +14,7 @@
     @vite('resources/js/app.js')
     <title>DevStagram - @yield('titulo')</title>
 
-	 @livewireSyles()
+	 @livewireStyles()
 
 </head>
 
