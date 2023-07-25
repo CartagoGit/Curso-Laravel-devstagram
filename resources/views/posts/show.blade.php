@@ -26,7 +26,9 @@
                         {{ $post->likes()->count() }} Likes
                         @if (auth()->check())
                             {{-- <form action="{{ route('likes.store', ['user' => auth()->user(), 'foreign' => $post]) }}" --}}
+										<livewire:like-post />
                             @if ($post->checkUserLiked(auth()->user()))
+
                                 <form
                                     novalidate
                                     action="{{ route('likes.destroy') }}"
