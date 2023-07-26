@@ -6,7 +6,7 @@
             class="text-lg"
             wire:click="clickLike"
         >
-            {{ $isLikedByUser ? '❌' : '💖' }}
+            <span class="text-lg">{{ $isLikedByUser ? '❌' : '💖' }}</span>
         </button>
     @endif
 
