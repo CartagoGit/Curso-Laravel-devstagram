@@ -5,35 +5,34 @@
     <meta charset="utf-8">
     <meta
         name="viewport"
-        content="width=device-width, initial-scale=1"
+        content="width=device-width, initial-scale=1.0"
     >
 
     @stack('styles')
     {{-- @stack('scripts') --}}
     @vite('resources/css/app.css')
-    @vite('resources/js/app.js')
-    <title>DevStagram - @yield('titulo')</title>
-
-	 @livewireStyles()
-
+    <style
+        type="text/css"
+        href="/resources/css/app.css"
+    >
+    </style>
+    @vite('resources/js/app.js') <title>DevStagram - @yield('titulo')</title>
+    @livewireStyles()
 </head>
 
 <body class="bg-gray-100">
     <header class="border-b bg-white p-5 shadow">
         <div
             class="container mx-auto flex flex-col items-center justify-between md:flex-row">
-
-            <h1 class="text-3xl font-black"> <a
-                    href="{{ route('home') }}">DevStagram </a>
-            </h1>
+            <h1 class="text-3xl font-black"><a
+                    href="{{ route('home') }}">DevStagram </a></h1>
             <nav
                 class="sx:gap-5 flex w-full justify-between gap-3 pt-5 sm:gap-10 md:w-auto md:justify-end md:pt-0">
                 @if (auth()->check())
                     <a
                         class="flex cursor-pointer items-center gap-2 rounded border bg-white p-2 text-sm font-bold uppercase text-gray-600 transition-all duration-300 hover:ring hover:ring-gray-500"
                         href="{{ route('posts.create') }}"
-                    >
-                        <svg
+                    ><svg
                             class="h-6 w-6"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -51,48 +50,31 @@
                                 stroke-linejoin="round"
                                 d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z"
                             />
-                        </svg>
-
-                        Crear publicación
-                    </a>
-                    <div class="flex gap-4">
-
-                        <a
+                        </svg>Crear publicación </a>
+                    <div class="flex gap-4"><a
                             class="flex items-center gap-2 rounded-lg p-3 font-bold text-gray-600 transition-all duration-300 hover:ring hover:ring-gray-500"
                             href={{ route('posts.index', auth()->user()->path) }}
-                        >
-                            Hola <span class="font-normal">
-                                {{ auth()->user()->name }}
-                            </span>
-                        </a>
+                        >Hola <span
+                                class="font-normal">{{ auth()->user()->name }}
+                            </span></a>
                         <form
                             class="flex items-center"
                             novalidate
                             action="{{ route('logout') }}"
                             method="POST"
-                        >
-                            @csrf
-                            <button
+                        >@csrf <button
                                 class="rounded-lg p-3 text-sm font-bold uppercase text-gray-600 transition-all duration-300 hover:ring hover:ring-gray-500"
-                            >
-                                Cerrar sesión
-                            </button>
-                        </form>
+                            >Cerrar sesión </button></form>
                     </div>
                 @else
                     <a
                         class="rounded-lg p-3 text-sm font-bold uppercase text-gray-600 transition-all duration-300 hover:ring hover:ring-gray-500"
                         href="/login"
-                    >Iniciar sesión</a>
-                    <a
+                    >Iniciar sesión</a><a
                         class="rounded-lg p-3 text-sm font-bold uppercase text-gray-600 transition-all duration-300 hover:ring hover:ring-gray-500"
                         href="{{ route('register') }}"
-                    >
-                        Crear Cuenta
-                    </a>
-                @endif
-
-                {{-- * Se podria hacer asi o con la directiva auth --}}
+                    >Crear Cuenta </a>
+                @endif{{-- * Se podria hacer asi o con la directiva auth --}}
                 {{-- @auth
                     <div class="text-gray-600 text-sm">
                         Hola <span class="font-normal">
@@ -114,19 +96,16 @@
                     </a>
                 @endguest --}}
             </nav>
-
         </div>
     </header>
-
     <main class="container mx-auto mt-10">
         <h2 class="mb-10 text-center text-3xl font-black">@yield('titulo')</h2>
         @yield('contenido')
     </main>
     <footer class="mt-10 p-5 text-center font-bold uppercase text-gray-500">
-        DevStagram - Todos los derechos reservados {{ now()->year }}
-    </footer>
-
-	 @livewireScripts()
+        DevStagram - Todos los derechos reservados {{ now()->year }} </footer>
+    @livewireScripts()
+	 <script src="/resources/js/app.js" type="text/javascript"></script>
 </body>
 
 </html>
