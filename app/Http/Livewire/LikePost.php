@@ -16,7 +16,7 @@ class LikePost extends Component
 
 	public $kindLike; //* post | comment
 
-	public bool $isLikedByUser;
+	public bool $isLikedByUser = false;
 
 
 	public function render()
@@ -27,7 +27,9 @@ class LikePost extends Component
 
 	public function mount($liked)
 	{
-		$this->isLikedByUser =  $liked->checkUserLiked(auth()->user());
+		if (auth()->check()) {
+			$this->isLikedByUser =  $liked->checkUserLiked(auth()->user());
+		}
 	}
 
 	public function clickLike()
