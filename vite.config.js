@@ -20,8 +20,9 @@ export default defineConfig({
 	plugins: [
 		laravel({
 			input: [
-				'resources/css/*.css', // Acepta todos los archivos CSS en la carpeta css
-				'resources/js/*.js', // Acepta todos los archivos JS en la carpeta resources
+				'resources/css/**/*.css', // Acepta todos los archivos CSS en la carpeta css y sus subcarpetas
+				'resources/css/**/*.scss', // Acepta todos los archivos SCSS en la carpeta css y sus subcarpetas
+				'resources/js/**/*.js',   // Acepta todos los archivos JS en la carpeta resources y sus subcarpetas
 			],
 			refresh: true,
 		}),
