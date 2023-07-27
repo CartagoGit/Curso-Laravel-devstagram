@@ -5,7 +5,9 @@ export default defineConfig({
 	server: {
 		hmr: {
 			// host: "localhost",
-			host: window.location.hostname,
+			host: process.env.APP_URL,
+			// host: window.location.hostname,
+			log: true,
 		},
 		// watch: {
 		//     // laravel: {
@@ -17,7 +19,10 @@ export default defineConfig({
 	},
 	plugins: [
 		laravel({
-			input: ['resources/css/app.css', 'resources/js/app.js'],
+			input: [
+				'resources/css/*.css', // Acepta todos los archivos CSS en la carpeta css
+				'resources/js/*.js', // Acepta todos los archivos JS en la carpeta resources
+			],
 			refresh: true,
 		}),
 	],
