@@ -11,12 +11,13 @@
     @stack('styles')
     {{-- @stack('scripts') --}}
     @vite('resources/css/app.css')
-    <style
+    {{-- <style
         type="text/css"
         href="/resources/css/app.css"
     >
-    </style>
-    @vite('resources/js/app.js') <title>DevStagram - @yield('titulo')</title>
+    </style> --}}
+    @vite('resources/js/app.js')
+	 <title>DevStagram - @yield('titulo')</title>
     @livewireStyles()
 </head>
 
@@ -105,7 +106,7 @@
     <footer class="mt-10 p-5 text-center font-bold uppercase text-gray-500">
         DevStagram - Todos los derechos reservados {{ now()->year }} </footer>
     @livewireScripts()
-	 <script src="/resources/js/app.js" type="text/javascript"></script>
+	 {{-- <script src="/resources/js/app.js" type="text/javascript"></script> --}}
 </body>
 
 </html>
