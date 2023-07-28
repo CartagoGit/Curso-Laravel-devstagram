@@ -20,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
 	 */
 	public function boot(): void
 	{
-		//* Asi forzcamos que en produccion todas las rutas sean https
+		//* Asi forzamos que en produccion todas las rutas sean https
 		if ($this->app->environment('production')) {
 			URL::forceScheme('https');
 		}
